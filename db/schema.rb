@@ -10,10 +10,170 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_223828) do
+ActiveRecord::Schema.define(version: 2021_04_19_061529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "businesses", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.integer "price_range"
+    t.string "photo"
+    t.boolean "claimed"
+    t.text "about"
+    t.date "founded"
+    t.string "website"
+    t.string "instagram"
+    t.string "facebook"
+    t.text "health_safety"
+    t.text "highlights"
+    t.text "accessibility"
+    t.text "offerings"
+    t.text "amenities"
+    t.text "payments"
+    t.boolean "parking"
+    t.boolean "influencer_hub"
+    t.boolean "local_favorite"
+    t.boolean "restaurant"
+    t.text "delivery_options"
+    t.boolean "alcohol"
+    t.boolean "takeout"
+    t.boolean "vegan_vegetarian_friendly"
+    t.boolean "gluten_free_friendly"
+    t.boolean "pet_friendly"
+    t.boolean "delivery"
+    t.boolean "kid_friendly"
+    t.boolean "scenic"
+    t.text "service_options"
+    t.boolean "reservations"
+    t.boolean "verified"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_businesses_on_user_id"
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.string "title"
+    t.integer "rating"
+    t.text "advice"
+    t.string "photo"
+    t.boolean "proof"
+    t.date "date_interacted"
+    t.bigint "business_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_feedbacks_on_business_id"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
+  end
+
+  create_table "ownerverificationrequests", force: :cascade do |t|
+    t.text "proof"
+    t.bigint "business_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_ownerverificationrequests_on_business_id"
+    t.index ["user_id"], name: "index_ownerverificationrequests_on_user_id"
+  end
+
+  create_table "perks", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "count"
+    t.boolean "active"
+    t.bigint "business_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_perks_on_business_id"
+  end
+
+  create_table "recommendationslists", force: :cascade do |t|
+    t.string "title"
+    t.text "summary"
+    t.string "city"
+    t.text "descriptions"
+    t.string "photo"
+    t.integer "rating"
+    t.bigint "user_id", null: false
+    t.bigint "business_id", null: false
+    t.bigint "service_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_recommendationslists_on_business_id"
+    t.index ["service_id"], name: "index_recommendationslists_on_service_id"
+    t.index ["user_id"], name: "index_recommendationslists_on_user_id"
+  end
+
+  create_table "redemptions", force: :cascade do |t|
+    t.boolean "redeemed"
+    t.boolean "locked"
+    t.bigint "perk_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["perk_id"], name: "index_redemptions_on_perk_id"
+    t.index ["user_id"], name: "index_redemptions_on_user_id"
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.text "content"
+    t.string "title"
+    t.bigint "feedback_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["feedback_id"], name: "index_responses_on_feedback_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "title"
+    t.integer "rating"
+    t.text "content"
+    t.integer "useful"
+    t.integer "funny"
+    t.integer "cool"
+    t.integer "questionable"
+    t.integer "food_rating"
+    t.integer "service"
+    t.integer "value"
+    t.integer "atmosphere"
+    t.string "photo"
+    t.boolean "proof"
+    t.bigint "business_id", null: false
+    t.bigint "service_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_reviews_on_business_id"
+    t.index ["service_id"], name: "index_reviews_on_service_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.time "opens_at"
+    t.time "closes_at"
+    t.integer "weekday"
+    t.bigint "business_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_schedules_on_business_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "price_cents"
+    t.string "photo"
+    t.bigint "business_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_services_on_business_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +187,32 @@ ActiveRecord::Schema.define(version: 2020_11_10_223828) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "verification_qrs", force: :cascade do |t|
+    t.bigint "business_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_verification_qrs_on_business_id"
+    t.index ["user_id"], name: "index_verification_qrs_on_user_id"
+  end
+
+  add_foreign_key "businesses", "users"
+  add_foreign_key "feedbacks", "businesses"
+  add_foreign_key "feedbacks", "users"
+  add_foreign_key "ownerverificationrequests", "businesses"
+  add_foreign_key "ownerverificationrequests", "users"
+  add_foreign_key "perks", "businesses"
+  add_foreign_key "recommendationslists", "businesses"
+  add_foreign_key "recommendationslists", "services"
+  add_foreign_key "recommendationslists", "users"
+  add_foreign_key "redemptions", "perks"
+  add_foreign_key "redemptions", "users"
+  add_foreign_key "responses", "feedbacks"
+  add_foreign_key "reviews", "businesses"
+  add_foreign_key "reviews", "services"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "schedules", "businesses"
+  add_foreign_key "services", "businesses"
+  add_foreign_key "verification_qrs", "businesses"
+  add_foreign_key "verification_qrs", "users"
 end
