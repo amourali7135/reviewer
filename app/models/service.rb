@@ -5,4 +5,7 @@ class Service < ApplicationRecord
   validates :description, presence: true
   validates :price_cents, presence: true
   validates :photo, presence: true
+
+  has_many_attached :photos
+
 end

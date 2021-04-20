@@ -10,5 +10,6 @@ class Recommendationslist < ApplicationRecord
   validates :photo, presence: true
   validates :rating, presence: true
 
+  has_many_attached :photos
 
 end

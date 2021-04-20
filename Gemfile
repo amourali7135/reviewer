@@ -38,6 +38,8 @@ gem 'rack-mini-profiler'
 gem 'memory_profiler'
 gem 'stackprof'
 gem 'faker'
+gem 'cloudinary'
+
 
 
 group :development, :test do  gem 'pry-byebug'

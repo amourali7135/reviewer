@@ -18,4 +18,6 @@ class Business < ApplicationRecord
   validates :payments, presence: true
   validates :restaurant, presence: true
 
+  has_many_attached :photos
+
 end

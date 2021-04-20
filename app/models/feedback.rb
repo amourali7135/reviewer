@@ -6,4 +6,7 @@ class Feedback < ApplicationRecord
   validates :advice, presence: true
   validates :date_interacted, presence: true
   validates :rating, presence: true
+
+  has_many_attached :photos
+
 end
