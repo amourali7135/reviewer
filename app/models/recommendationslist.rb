@@ -6,7 +6,7 @@ class Recommendationslist < ApplicationRecord
   validates :title, presence: true
   validates :summary, presence: true
   validates :city, presence: true
-  valdiates :description, presence: true
+  validates :description, presence: true
   validates :photo, presence: true
   validates :rating, presence: true
 
