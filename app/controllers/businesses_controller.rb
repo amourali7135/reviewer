@@ -47,7 +47,7 @@ class BusinessesController < ApplicationController
   private
 
   def business_params
-    params.require(:business).permit( :name, :phone, :address, :latitude, :longitude, :price_range, :photo, :claimed, :about, :founded, :website, :instagram, :facebook, health_safety: [], :highlights, :accessibility, :offerings, :amenities, :payments, :parking, :influencer_hub, :local_favorite, :restaurant, :delivery_options, :alcohol, :takeout, :vegan_vegetarian_friendly, :pet_friendly, :delivery_options, :kid_friendly, :scenic, :service_options, :reservations, :verified ,tag_list: [] )
+    params.require(:business).permit( :name, :phone, :address, :latitude, :longitude, :price_range, photos: [], :claimed, :about, :founded, :website, :instagram, :facebook, health_safety: [], :highlights, :accessibility, :offerings, :amenities, :payments, :parking, :influencer_hub, :local_favorite, :restaurant, :delivery_options, :alcohol, :takeout, :vegan_vegetarian_friendly, :pet_friendly, :delivery_options, :kid_friendly, :scenic, :service_options, :reservations, :verified, :permanently_closed, tag_list: [] )
   end
 
 

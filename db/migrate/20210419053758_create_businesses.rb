@@ -8,7 +8,7 @@ class CreateBusinesses < ActiveRecord::Migration[6.0]
       t.float :longitude
       t.integer :price_range
       t.string :photo
-      t.boolean :claimed
+      t.boolean :claimed, default: false
       t.text :about
       t.date :founded
       t.string :website
@@ -23,7 +23,7 @@ class CreateBusinesses < ActiveRecord::Migration[6.0]
       t.boolean :parking
       t.boolean :influencer_hub
       t.boolean :local_favorite
-      t.boolean :restaurant
+      t.boolean :restaurant, default: false
       t.text :delivery_options
       t.boolean :alcohol
       t.boolean :takeout
@@ -35,8 +35,9 @@ class CreateBusinesses < ActiveRecord::Migration[6.0]
       t.boolean :scenic
       t.text :service_options
       t.boolean :reservations
-      t.boolean :verified
-      t.references :user, null: false, foreign_key: true
+      t.boolean :verified, default: false
+      t.boolean :permanently_closed, default: false
+      t.references :user, null: true, foreign_key: true
 
       t.timestamps
     end

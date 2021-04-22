@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_224537) do
     t.float "longitude"
     t.integer "price_range"
     t.string "photo"
-    t.boolean "claimed"
+    t.boolean "claimed", default: false
     t.text "about"
     t.date "founded"
     t.string "website"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_224537) do
     t.boolean "parking"
     t.boolean "influencer_hub"
     t.boolean "local_favorite"
-    t.boolean "restaurant"
+    t.boolean "restaurant", default: false
     t.text "delivery_options"
     t.boolean "alcohol"
     t.boolean "takeout"
@@ -78,8 +78,9 @@ ActiveRecord::Schema.define(version: 2021_04_20_224537) do
     t.boolean "scenic"
     t.text "service_options"
     t.boolean "reservations"
-    t.boolean "verified"
-    t.bigint "user_id", null: false
+    t.boolean "verified", default: false
+    t.boolean "permanently_closed", default: false
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_businesses_on_user_id"
@@ -114,7 +115,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_224537) do
     t.string "title"
     t.text "description"
     t.integer "count"
-    t.boolean "active"
+    t.boolean "active", default: true
     t.bigint "business_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -139,8 +140,8 @@ ActiveRecord::Schema.define(version: 2021_04_20_224537) do
   end
 
   create_table "redemptions", force: :cascade do |t|
-    t.boolean "redeemed"
-    t.boolean "locked"
+    t.boolean "redeemed", default: false
+    t.boolean "locked", default: true
     t.bigint "perk_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

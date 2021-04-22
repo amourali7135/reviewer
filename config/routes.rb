@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # Indices for services, feedback, perks, or just show on business show page?
-  resources :businesses, :path => 'businesses' do
+  resources :businesses, except: :destroy, :path => 'businesses' do
     resources :services, :path => 'service'
     resources :feedbacks, :path => 'customer_feedback'
     resources :perks, except: :index
     resources :reviews, except: :index
-    resources :verification_qrs, only: :show, :path => 'QR_Verification' #Oh wait...lock it.
+    resources :verification_qrs, only: :show, :path => 'QR_Verification' #Oh wait...lock it to owner only.
   end
 
     #Wtf is this array?  I dont' even remember.  Got from Creaze.

@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable
 
-  has_many :businesses
+  has_one :business # For MVP to save time, later on do logic for multiple.
   has_many :services, through: :business
   has_many :perks, through: :business
   has_many :reviews

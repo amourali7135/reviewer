@@ -4,7 +4,7 @@ class CreatePerks < ActiveRecord::Migration[6.0]
       t.string :title
       t.text :description
       t.integer :count
-      t.boolean :active
+      t.boolean :active, default: true
       t.references :business, null: false, foreign_key: true
 
       t.timestamps
