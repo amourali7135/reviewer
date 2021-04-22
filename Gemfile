@@ -72,6 +72,8 @@ group :development do
   # For having a better error page in development with console.
   gem "better_errors"
   gem "binding_of_caller"
+  # To help keep the DB robust and healthy.  Check docs.
+  gem 'active_record_doctor'
 
 end
 
