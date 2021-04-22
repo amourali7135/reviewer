@@ -173,6 +173,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_224537) do
     t.integer "atmosphere"
     t.string "photo"
     t.boolean "proof"
+    t.text "followup"
     t.bigint "business_id", null: false
     t.bigint "service_id", null: false
     t.bigint "user_id", null: false

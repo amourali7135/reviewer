@@ -14,6 +14,7 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.integer :atmosphere
       t.string :photo
       t.boolean :proof
+      t.text :followup
       t.references :business, null: false, foreign_key: true
       t.references :service, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true

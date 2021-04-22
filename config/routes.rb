@@ -9,11 +9,11 @@ Rails.application.routes.draw do
     resources :feedbacks, :path => 'customer_feedback'
     resources :perks, except: :index
     resources :reviews, except: :index
-    resources :verification_qrs, only: :show, :path => 'QR_Verification' #Oh wait...lock it to owner only.
+    resources :verification_qrs, only: [:show, :create], :path => 'QR_Verification' #Oh wait...lock it to owner only.
   end
 
-    #Wtf is this array?  I dont' even remember.  Got from Creaze.
-  resources :services, only: [] do
+  #Wtf is this array?  I dont' even remember.  Got from Creaze.
+  resources :services, only: [], :path => 'services' do
   end
 
   resources :users, only: [:show] do
