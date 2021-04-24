@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :feedbacks, :path => 'customer_feedback'
     resources :perks, except: :index
     resources :reviews, except: :index
-    resources :verification_qrs, only: [:show, :create], :path => 'QR_Verification' #Oh wait...lock it to owner only.
+    resources :verification_qrs, only: [:show, :create, :update], :path => 'QR_Verification' #Oh wait...lock it to owner only.
   end
 
   #Wtf is this array?  I dont' even remember.  Got from Creaze.
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :redemptions, only: [:show]
     resources :recommendationslists
+    resources :verification_qrs, only: [:index, :show, :update], :path =>'Your_verified_interactions'
   end
 
   get 'about', to: 'pages#about', as: 'about'
