@@ -27,7 +27,7 @@ class Business < ApplicationRecord
   private
 
   def autocreateverificationqr
-    self.verification_qr.create!
+    Verification_qr.create(business_id: self.id)
   end
 
 end

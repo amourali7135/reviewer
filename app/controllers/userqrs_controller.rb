@@ -5,6 +5,7 @@ class UserqrsController < ApplicationController
   end
 
   def create #is this necessary for callback?  Or will it happen anyways?
+    @business = Business.find(params[:id])
     @userqr = Userqr.new(userqr_params)
     if current_user.review.save || current_user.feedback.save
       flash[:notice] = "Your verifiable QR code was successfully created!"

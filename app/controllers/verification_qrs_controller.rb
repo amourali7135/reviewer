@@ -24,7 +24,8 @@ class VerificationQrsController < ApplicationController
   end
 
   def create
-
+    @verification_qr = verification_qr.new(verification_qr_params)
+    @business = Business.find(params[:id])
   end
 
   def

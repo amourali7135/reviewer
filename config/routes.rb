@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :redemptions, only: [:show]
     resources :recommendationslists
     resources :verification_qrs, only: [:index, :update], :path =>'verified_interactions' #Fix this up with views.
-    resources :userqrs, only: [:index, :create, :update, :show] => 'verified_feedback_or_reviews'
+    resources :userqrs, only: [:index, :create, :update, :show], :path => 'verified_feedback_or_reviews'
   end
 
   get 'about', to: 'pages#about', as: 'about'

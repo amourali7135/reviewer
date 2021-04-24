@@ -39,6 +39,7 @@ gem 'memory_profiler'
 gem 'stackprof'
 gem 'faker'
 gem 'cloudinary'
+gem 'rqrcode'
 
 
 
