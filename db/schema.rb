@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_20_224537) do
+ActiveRecord::Schema.define(version: 2021_04_24_195407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -205,6 +205,19 @@ ActiveRecord::Schema.define(version: 2021_04_20_224537) do
     t.index ["business_id"], name: "index_services_on_business_id"
   end
 
+  create_table "userqrs", force: :cascade do |t|
+    t.bigint "feedback_id", null: false
+    t.bigint "review_id", null: false
+    t.bigint "business_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_userqrs_on_business_id"
+    t.index ["feedback_id"], name: "index_userqrs_on_feedback_id"
+    t.index ["review_id"], name: "index_userqrs_on_review_id"
+    t.index ["user_id"], name: "index_userqrs_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -245,6 +258,10 @@ ActiveRecord::Schema.define(version: 2021_04_20_224537) do
   add_foreign_key "reviews", "users"
   add_foreign_key "schedules", "businesses"
   add_foreign_key "services", "businesses"
+  add_foreign_key "userqrs", "businesses"
+  add_foreign_key "userqrs", "feedbacks"
+  add_foreign_key "userqrs", "reviews"
+  add_foreign_key "userqrs", "users"
   add_foreign_key "verification_qrs", "businesses"
   add_foreign_key "verification_qrs", "users"
 end

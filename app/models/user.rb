@@ -14,5 +14,16 @@ class User < ApplicationRecord
   has_many :recommendationslists, dependent: :destroy
   has_many :redemptions
   has_many :verification_qrs
+  has_many :userqrs
+
+  after_create :autocreateuserqr
+
+  private
+
+  def autocreateuserqr
+    self.userqr.create! if user.feedback.save || user.review.save
+  end
+
+  #need a callback to create their QR code for business after review/feedback given!
 
 end

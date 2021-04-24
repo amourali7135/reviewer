@@ -9,5 +9,6 @@ class Review < ApplicationRecord
   validates :photo, presence: true
 
   has_many_attached :photos
+  has_many :userqrs
 
 end

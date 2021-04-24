@@ -16,10 +16,11 @@ Rails.application.routes.draw do
   resources :services, only: [], :path => 'services' do
   end
 
-  resources :users, only: [:show] do
+  resources :users, except: [:index ] do #Index necessary?
     resources :redemptions, only: [:show]
     resources :recommendationslists
-    resources :verification_qrs, only: [:index, :show, :update], :path =>'Your_verified_interactions'
+    resources :verification_qrs, only: [:index, :update], :path =>'verified_interactions' #Fix this up with views.
+    resources :userqrs, only: [:index, :create, :update, :show] => 'verified_feedback_or_reviews'
   end
 
   get 'about', to: 'pages#about', as: 'about'

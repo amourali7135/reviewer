@@ -8,6 +8,7 @@ class Business < ApplicationRecord
   has_many :recommendationslists #Can a dependent destroy fuck this up later for people?
   has_one :verification_qr, dependent: :destroy #plural or singular?
   has_one :schedule, dependent: :destroy #plural or singular?
+  has_many :userqrs, dependent: :destroy
 
   validates :name, presence: true
   validates :phone, presence: true
@@ -21,11 +22,11 @@ class Business < ApplicationRecord
   has_many_attached :photos
 
   #Callback to automatically create a QR code for them.
-  after_create :autocreateqr
+  after_create :autocreateverificationqr
 
   private
 
-  def autocreateqr
+  def autocreateverificationqr
     self.verification_qr.create!
   end
 

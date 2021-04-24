@@ -8,5 +8,8 @@ class Feedback < ApplicationRecord
   validates :rating, presence: true
 
   has_many_attached :photos
+  has_many :userqrs
+
+
 
 end

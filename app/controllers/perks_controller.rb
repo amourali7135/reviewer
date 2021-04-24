@@ -1,6 +1,7 @@
 class PerksController < ApplicationController
   def index
-    @businesses = Perk.all
+    # @business = Business.find(params[:business_id]) #is this necessary though?  Test it out.
+    @perks = Perk.all
   end
 
   def new
