@@ -37,7 +37,7 @@ class CreateBusinesses < ActiveRecord::Migration[6.0]
       t.boolean :reservations
       t.boolean :verified, default: false
       t.boolean :permanently_closed, default: false
-      t.references :user, null: true, foreign_key: true
+      t.references :user, null: true, foreign_key: true #null: true or false with optional?
 
       t.timestamps
     end

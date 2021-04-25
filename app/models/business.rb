@@ -17,17 +17,17 @@ class Business < ApplicationRecord
   validates :about, presence: true
   validates :founded, presence: true
   validates :payments, presence: true
-  validates :restaurant, presence: true
+  # validates :restaurant, presence: true
 
   has_many_attached :photos
 
   #Callback to automatically create a QR code for them.
-  after_create :autocreateverificationqr
+  # after_create :autocreateverificationqr
 
-  private
+  # private
 
-  def autocreateverificationqr
-    Verification_qr.create(business_id: self.id)
-  end
+  # def autocreateverificationqr
+  #   VerificationQr.create(business_id: self.id)
+  # end
 
 end
