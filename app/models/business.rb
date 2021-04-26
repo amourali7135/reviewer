@@ -17,6 +17,7 @@ class Business < ApplicationRecord
   validates :about, presence: true
   validates :founded, presence: true
   validates :payments, presence: true
+  validates :user_id, presence: true, if: :user_id_present?
   # validates :restaurant, presence: true
 
   has_many_attached :photos
@@ -24,10 +25,14 @@ class Business < ApplicationRecord
   #Callback to automatically create a QR code for them.
   # after_create :autocreateverificationqr
 
-  # private
+  private
 
   # def autocreateverificationqr
   #   VerificationQr.create(business_id: self.id)
   # end
+
+  def user_id_present?
+    user_id.present?
+  end
 
 end
