@@ -16,9 +16,10 @@ redirect_to new_user_path(:id => 1, :contact_id => 3, :name => 'suleman')
 <section>
 <div>
 
-<%= render_qr_code("https://www.google.com/") %>
-You better hope to god that shit bullshit below works for redirecting and updating the record bro!
-<%#= So render_qr_code(redirect_to controller: "verification_qr', action: 'update', user_id: current_user.id, business_id: verification_qr.business_id) %>
+<%#= render_qr_code("https://www.google.com/") %>
+<%#= You better hope to god that shit bullshit below works for redirecting and updating the record bro! %>
+<%#= render_qr_code(redirect_to controller: "verificationqr", action: 'update', user_id: current_user.id, business_id: @verification_qr.business_id) %>
+<%= render_qr_code(business_verificationqr_path(user_id: current_user.id, business_id: @verificationqr.business_id), method: :patch) %>
 
 </div>
 </section>

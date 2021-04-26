@@ -10,7 +10,7 @@ module QrcodeHelper
       qr.modules.each_index do |x|
         concat(content_tag(:tr) do
           qr.modules.each_index do |y|
-            color = qr.dark?(x, y) ? 'black' : 'white'
+            color = qr.qrcode.checked?(x, y) ? 'black' : 'white'
             concat content_tag(:td, nil, class: color, style: sizeStyle)
           end
         end)
@@ -18,3 +18,5 @@ module QrcodeHelper
     end
   end
 end
+
+

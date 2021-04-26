@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :responses, through: :feedback
   has_many :recommendationslists, dependent: :destroy
   has_many :redemptions
-  has_many :verification_qrs
+  has_many :verificationqrs, dependent: :destroy
   has_many :userqrs
 
   #Wait, is this here or in other two models?  Shit.
