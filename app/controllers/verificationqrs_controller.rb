@@ -9,21 +9,22 @@ class VerificationqrsController < ApplicationController
     # @verificationqr = Verificationqr.find(params[:id])
     ##  Or...
     @business = Business.find(params[:business_id])
-    @verificationqr = Business.find(params[:business_id]).verificationqr
+    # @verificationqr = Business.find(params[:business_id]).verificationqr
+    @verificationqr = @business.verificationqr
   end
 
   def update
     # @verificationqr = VerificationQr.find(params[:id])
     ## or
+    @business = Business.find(params[:business_id])
     @verificationqr = Business.find(params[:business_id]).verificationqr
     # @business = @verificationqr.business_id
     # if current_user.review.includes?(@business.id) || current_user.feedback.includes?(@business.id)
-    if current_user.present?
-      @verificationqr.update(verificationqr_params)
+    if current_user.present? && @verificationqr.update(verificationqr_params)
       flash[:notice] = "You've successfully verified your interaction!"
       redirect_to @verificationqr.business  # Or user dashboard, figure out l8r after views are up.
     else
-      flash[:error] = "This user hasn't provided feedback or a review for this business, please try again after they do!"
+      flash[:error] = "There was an error, please try again!"
       render 'show'
     end
 
@@ -37,7 +38,7 @@ class VerificationqrsController < ApplicationController
   private
 
   def verificationqr_params
-    params.require(:verificationqr).permit(:business_id, :user_id)
+    params.require(:verificationqr).permit(:business_id, :user_id, :format, :verificationqr_id)
   end
 
 end
