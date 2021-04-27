@@ -1,24 +1,17 @@
 Todos:
 Remember this is a user scanning a business QR to prove verification.  What if not registered?  L8R.
 1:  Generate QR automatically via callback.  Done I think.
-2:  And have it show here.  On it.
-3:  Hit controller action for update.
+2:  And have it show here.  On it.  Done.
+3:  Hit controller action for update.  Done with link_to one.
 https://stackoverflow.com/questions/1430247/passing-parameters-in-rails-redirect-to
-4:  Update params to include user_Id
+4:  Update params to include user_Id.  Done.
 5:  Pundit access restricted for business owner only.
-
-
-redirect_to controller: 'thing', action: 'edit', id: 3, something: 'else'
-
-redirect_to new_user_path(:id => 1, :contact_id => 3, :name => 'suleman')
+PS:  May have to go with a half-assed temporary MVP solution to save time.
 
 <section>
 <div>
 
-<%#= render_qr_code("https://www.google.com/") %>
-<%#= You better hope to god that shit bullshit below works for redirecting and updating the record bro! %>
-<%= render_qr_code(business_verificationqr_path(user_id: current_user.id, business_id: @verificationqr.business_id), method: :patch) %>
-Test this one dog
+
 <%= render_qr_code("http://zelaproduct.herokuapp.com/businesses/#{@verificationqr.business_id}/qr_verification?verificationqr%5Bbusiness_id%5D=#{@verificationqr.business_id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}") %>
 
 
@@ -27,12 +20,24 @@ Test this one dog
 <%= render_qr_code(link_to "workingcodecopied", business_verificationqr_path(@verificationqr, verificationqr: {id: @verificationqr.id, user_id: current_user.id, business_id: @verificationqr.business_id}), method: :patch) %>
 
 This one works!
-<%= link_to "working!", business_verificationqr_path(@verificationqr, verificationqr: {id: @verificationqr.id, user_id: current_user.id, business_id: @verificationqr.business_id}), method: :patch %>
 
 <%= render_qr_code(business_verificationqr_path(@verificationqr, verificationqr: {id: @verificationqr.id, user_id: current_user.id, business_id: @verificationqr.business_id}), method: :patch) %>
 
 <%= form_for(@verificationqr, url: business_verificationqr_path(@verificationqr, verificationqr: {id: @verificationqr.id, user_id: current_user.id, business_id: @verificationqr.business_id}), method: :patch) do end %>
 
+<%= render_qr_code("http://localhost:3000/businesses/#{@verificationqr.business.id}/qr_verification#{params.to_s}") %>
+
+
+Let's make this show up after a QR scan and reload!
+<br>
+<% if @url.include?(params.to_s) %>
+  <%= link_to "workingtest!", business_verificationqr_path(@verificationqr, verificationqr: {id: @verificationqr.id, user_id: current_user.id, business_id: @verificationqr.business_id}), method: :patch %>
+<% else %>
+  <p>Scan the QR code<p>
+<% end %>
+
+
+<%#= render_qr_code(business_verificationqr_path(user_id: current_user.id, business_id: @verificationqr.business_id), method: :patch) %>
 <%#= render_qr_code(form_for(@verificationqr, url: business_verificationqr_path(current_user.id, @verificationqr.business_id), method: :patch) do end) %>
 <%#= render_qr_code(link_to 'Shit', business_verificationqr_path(current_user.id, @verificationqr.business_id), method: :patch) %>
 <%#= render_qr_code(redirect_to controller: "verificationqr", action: 'update', user_id: current_user.id, business_id: @verification_qr.business_id) %>

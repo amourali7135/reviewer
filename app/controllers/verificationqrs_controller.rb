@@ -11,6 +11,8 @@ class VerificationqrsController < ApplicationController
     @business = Business.find(params[:business_id])
     # @verificationqr = Business.find(params[:business_id]).verificationqr
     @verificationqr = @business.verificationqr
+    @url = request.path_info
+    # raise
   end
 
   def update
