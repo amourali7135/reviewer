@@ -17,6 +17,8 @@ module QrcodeHelper
       end
     end
   end
+  # params_test = []
+
 end
 
 

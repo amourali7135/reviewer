@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :reviews, except: :index
     #singular resource for verification_qr?  Had no idea.  try it...
     resource :verificationqr, only: [:show, :create, :update], :path => 'qr_verification' #Oh wait...lock it to owner only.
+    get 'validation', to: 'verificationqrs#update', as: 'qr_verification_validation'
   end
 
   #Wtf is this array?  I dont' even remember.  Got from Creaze.
