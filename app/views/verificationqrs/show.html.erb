@@ -41,10 +41,10 @@ Heroku one...didn't work.
 <%#= render_qr_code("http://localhost:3000/businesses/#{@verificationqr.business.id}/qr_verification?validate?uid=#{current_user.id}") %>
 <%#= render_qr_code("http://localhost:3000/businesses/#{@verificationqr.business.id}/qr_verification?validate?uid=#{current_user.id}") %>
 <%= link_to "newvalidationpathtesting...works!", business_qr_verification_validation_path(@verificationqr, verificationqr: {id: @verificationqr.id, user_id: current_user.id, business_id: @verificationqr.business_id}) %>
-<%= render_qr_code("http://localhost:3000/businesses/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}") %>
-<%= render_qr_code("http://zelaproduct.herokuapp.com/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}") %>
+<%= render_qr_code("http://localhost:3000/businesses/businesses/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}") %>
+<%= render_qr_code("http://zelaproduct.herokuapp.com/businesses/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}") %>
 <%= link_to "localhostnewvalidationpathlinking!", "http://localhost:3000/businesses/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}" %>
-<%= link_to "herokunewvalidationpathlinking!", "http://zelaproduct.herokuapp.com/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}" %>
+<%= link_to "herokunewvalidationpathlinking!", "http://zelaproduct.herokuapp.com/businesses/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}" %>
 <br>
 Why do these work in local host, but not heroku?  Fuck me.
 Let's make this show up after a QR scan and reload!  But how???  Ask Ray?
