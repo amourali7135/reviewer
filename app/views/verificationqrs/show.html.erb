@@ -14,12 +14,12 @@ PPS:  So this is supposed to be for business owner only to show, but how can a n
 
 
 <%= render_qr_code("http://zelaproduct.herokuapp.com/businesses/#{@verificationqr.business_id}/qr_verification?verificationqr%5Bbusiness_id%5D=#{@verificationqr.business_id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}") %>
-
+-From first working link.
 
 <%= render_qr_code(form_for(@verificationqr, url: business_verificationqr_path(@verificationqr, verificationqr: {id: @verificationqr.id, user_id: current_user.id, business_id: @verificationqr.business_id}), method: :patch) do end) %>
-
+-Form QR integration attempt.
 <%= render_qr_code(link_to "workingcodecopied", business_verificationqr_path(@verificationqr, verificationqr: {id: @verificationqr.id, user_id: current_user.id, business_id: @verificationqr.business_id}), method: :patch) %>
-
+-Link QR integration attempt.
 This one works!
 
 <%= render_qr_code(business_verificationqr_path(@verificationqr, verificationqr: {id: @verificationqr.id, user_id: current_user.id, business_id: @verificationqr.business_id}), method: :patch) %>
@@ -32,20 +32,21 @@ This one works!
 Heroku one...didn't work.
 <br>
 
-<%#= render_qr_code("http://localhost:3000/businesses/#{@verificationqr.business.id}/qr_verification?#{something.to_s}") %>
-/validate?pid=#{perk.id}
-
-<%#= render_qr_code(business_verificationqr_path(@verificationqr, params)) %>
 
 <%= link_to "paramstesting", business_verificationqr_path(@verificationqr, current_user.id.to_s) %>
 
 <br>
 
 
-<%= render_qr_code("http://localhost:3000/businesses/#{@verificationqr.business.id}/qr_verification?validate?uid=#{current_user.id}") %>
+<%#= render_qr_code("http://localhost:3000/businesses/#{@verificationqr.business.id}/qr_verification?validate?uid=#{current_user.id}") %>
+<%#= render_qr_code("http://localhost:3000/businesses/#{@verificationqr.business.id}/qr_verification?validate?uid=#{current_user.id}") %>
 <%= link_to "newvalidationpathtesting...works!", business_qr_verification_validation_path(@verificationqr, verificationqr: {id: @verificationqr.id, user_id: current_user.id, business_id: @verificationqr.business_id}) %>
-
+<%= render_qr_code("http://localhost:3000/businesses/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}") %>
+<%= render_qr_code("http://zelaproduct.herokuapp.com/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}") %>
+<%= link_to "localhostnewvalidationpathlinking!", "http://localhost:3000/businesses/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}" %>
+<%= link_to "herokunewvalidationpathlinking!", "http://zelaproduct.herokuapp.com/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}" %>
 <br>
+Why do these work in local host, but not heroku?  Fuck me.
 Let's make this show up after a QR scan and reload!  But how???  Ask Ray?
 # if(params.has_key?(:one) && params.has_key?(:two))
 <br>
@@ -56,6 +57,8 @@ Let's make this show up after a QR scan and reload!  But how???  Ask Ray?
 <% end %>
 
 Add a hidden field in the params that only works when scanned via QR code to activate url?
+
+
 <%#= render_qr_code(business_verificationqr_path(user_id: current_user.id, business_id: @verificationqr.business_id), method: :patch) %>
 <%#= render_qr_code(form_for(@verificationqr, url: business_verificationqr_path(current_user.id, @verificationqr.business_id), method: :patch) do end) %>
 <%#= render_qr_code(link_to 'Shit', business_verificationqr_path(current_user.id, @verificationqr.business_id), method: :patch) %>
@@ -64,5 +67,6 @@ Add a hidden field in the params that only works when scanned via QR code to act
 <%#= link_to("Profile", controller: "verificationqr", action: "update", user_id: current_user.id, business_id: @verificationqr.business_id, verificationqr_id: @verificationqr.id) %>
 <%#= link_to 'Experiment', business_verificationqr_path(:verificationqr  {@verificationqr.id}), method: :patch %>
 <%#= link_to('Shit', business_verificationqr_path(:business_id => @verificationqr.business_id, :user_id => current_user.id, :verificationqr_id => @verificationqr.id), method: :patch) %>
+<%#= render_qr_code("http://localhost:3000/businesses/#{@verificationqr.business.id}/qr_verification?#{something.to_s}") %>
 </div>
 </section>
