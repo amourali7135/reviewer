@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_224807) do
+ActiveRecord::Schema.define(version: 2021_05_03_201215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,15 @@ ActiveRecord::Schema.define(version: 2021_04_26_224807) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["business_id"], name: "index_feedbacks_on_business_id"
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
+  end
+
+  create_table "interactionverifications", force: :cascade do |t|
+    t.bigint "business_id", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_interactionverifications_on_business_id"
+    t.index ["user_id"], name: "index_interactionverifications_on_user_id"
   end
 
   create_table "ownerverificationrequests", force: :cascade do |t|
@@ -232,11 +241,9 @@ ActiveRecord::Schema.define(version: 2021_04_26_224807) do
 
   create_table "verificationqrs", force: :cascade do |t|
     t.bigint "business_id", null: false
-    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["business_id"], name: "index_verificationqrs_on_business_id"
-    t.index ["user_id"], name: "index_verificationqrs_on_user_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -244,6 +251,8 @@ ActiveRecord::Schema.define(version: 2021_04_26_224807) do
   add_foreign_key "businesses", "users"
   add_foreign_key "feedbacks", "businesses"
   add_foreign_key "feedbacks", "users"
+  add_foreign_key "interactionverifications", "businesses"
+  add_foreign_key "interactionverifications", "users"
   add_foreign_key "ownerverificationrequests", "businesses"
   add_foreign_key "ownerverificationrequests", "users"
   add_foreign_key "perks", "businesses"
@@ -263,5 +272,4 @@ ActiveRecord::Schema.define(version: 2021_04_26_224807) do
   add_foreign_key "userqrs", "reviews"
   add_foreign_key "userqrs", "users"
   add_foreign_key "verificationqrs", "businesses"
-  add_foreign_key "verificationqrs", "users"
 end

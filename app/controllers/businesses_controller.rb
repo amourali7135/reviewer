@@ -19,6 +19,8 @@ class BusinessesController < ApplicationController
 
   def show
     @business = Business.find(params[:id])
+    @reviews = @business.reviews.all
+    # Paginate later on.
   end
 
   def update

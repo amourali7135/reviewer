@@ -7,8 +7,11 @@ class Business < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :recommendationslists #Can a dependent destroy fuck this up later for people?
   has_one :verificationqr, dependent: :destroy #plural or singular?
+  # has_many :verificationqrs #, dependent: :destroy #plural or singular?  FUCK MY LIFE!
   has_one :schedule, dependent: :destroy #plural or singular?
   has_many :userqrs, dependent: :destroy
+  has_many :interactionverifications
+
 
   validates :name, presence: true
   validates :phone, presence: true

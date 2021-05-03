@@ -13,8 +13,9 @@ class User < ApplicationRecord
   has_many :responses, through: :feedback
   has_many :recommendationslists, dependent: :destroy
   has_many :redemptions
-  has_many :verificationqrs, dependent: :destroy
+  # has_many :verificationqrs#, dependent: :destroy #is this shit scalable dog?
   has_many :userqrs
+  has_many :interactionverifications, dependent: :destroy
 
   #Wait, is this here or in other two models?  Shit.
   # after_create :autocreateuserqr

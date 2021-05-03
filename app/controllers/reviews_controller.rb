@@ -1,6 +1,10 @@
 class ReviewsController < ApplicationController
   def index
-    @businesses = Review.all
+    @business = Business.find(params[:business_id])
+    @reviews = @business.reviews.all
+    # n + 1?  Check and see.
+    # Should have this load on business show page really, not on the index.  Save time/UX.
+    # Paginate it later on.
   end
 
   def new

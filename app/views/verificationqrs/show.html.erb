@@ -8,42 +8,45 @@ https://stackoverflow.com/questions/1430247/passing-parameters-in-rails-redirect
 5:  Pundit access restricted for business owner only.
 PS:  May have to go with a half-assed temporary MVP solution to save time.
 PPS:  So this is supposed to be for business owner only to show, but how can a normal user access it?  Clear it through params or some hidden shit?  Fuck me.
+FML:  Filter so only a fresh one shows upon updates...?
 
 <section>
-<div>
+<div class="old ones">
 <%= render_qr_code("http://localhost:3000/businesses/businesses/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}") %>  THESE TWO WORK MOTHER FUCKER!
 <%= render_qr_code("http://zelaproduct.herokuapp.com/businesses/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}") %>  THESE TWO WORK MOTHER FUCKER!
 <%= link_to "localhostnewvalidationpathlinking!", "http://localhost:3000/businesses/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}" %>
 <%= link_to "herokunewvalidationpathlinking!", "http://zelaproduct.herokuapp.com/businesses/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}" %>
+<div>
+<br>
 <br>
 
-
+<%#= link_to "localhostnewvalidationpathlinking!", "http://localhost:3000/businesses/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}" %>
 
 <%# if @url.include?('current_user.id') %>
   <%#= link_to "workingtest!", business_verificationqr_path(@verificationqr, verificationqr: {id: @verificationqr.id, user_id: current_user.id, business_id: @verificationqr.business_id}), method: :patch %>
 <%# else %>
 <%# end %>
 
+<div class="new ones">
+<%#= link_to "Experimenting with new model/route", business_qr_verification_validation_path(@interactionverification, interactionverification: {id: @interactionverification.id, user_id: current_user.id, business_id: @verificationqr.business_id}) %>
+<%= link_to "Experimenting with new model/route", business_qr_verification_validation_path(user_id: current_user.id, business_id: @business.id, interactionverification: Interactionverification.new) %>
+<%#= link_to "Experimenting with new model/route", business_qr_verification_validation_path(@interactionverification.id: Interactionverification.new.id, user_id: current_user.id, business_id: @business.id) %>
+
+<br>
+<%#= render_qr_code("http://localhost:3000/businesses/businesses/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}") %>  THESE TWO WORK MOTHER FUCKER!
+<%#= render_qr_code("http://zelaproduct.herokuapp.com/businesses/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}") %>  THESE TWO WORK MOTHER FUCKER!
+<%#= link_to "localhostnewvalidationpathlinking!", "http://localhost:3000/businesses/#{@business.id}/validation?interactionverification%5Bbusiness_id%5D=#{@business.id}&interactionverification%5Bid%5D=#{@interactionverification.id}&interactionverification%5Buser_id%5D=#{current_user.id}" %>
+<%#= link_to "herokunewvalidationpathlinking!", "http://zelaproduct.herokuapp.com/businesses/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}" %>
+<div>
 
 
-<%#= render_qr_code(business_verificationqr_path(user_id: current_user.id, business_id: @verificationqr.business_id), method: :patch) %>
-<%#= render_qr_code(form_for(@verificationqr, url: business_verificationqr_path(current_user.id, @verificationqr.business_id), method: :patch) do end) %>
-<%#= render_qr_code(link_to 'Shit', business_verificationqr_path(current_user.id, @verificationqr.business_id), method: :patch) %>
-<%#= render_qr_code(redirect_to controller: "verificationqr", action: 'update', user_id: current_user.id, business_id: @verification_qr.business_id) %>
 <%#= render_qr_code("http://zelaproduct.herokuapp.com/businesses/#{@verificationqr.business.id}/qr_verification?user_id=#{current_user.id}") %>
 <%#= link_to("Profile", controller: "verificationqr", action: "update", user_id: current_user.id, business_id: @verificationqr.business_id, verificationqr_id: @verificationqr.id) %>
 <%#= link_to 'Experiment', business_verificationqr_path(:verificationqr  {@verificationqr.id}), method: :patch %>
 <%#= link_to('Shit', business_verificationqr_path(:business_id => @verificationqr.business_id, :user_id => current_user.id, :verificationqr_id => @verificationqr.id), method: :patch) %>
-<%#= render_qr_code("http://localhost:3000/businesses/#{@verificationqr.business.id}/qr_verification?#{something.to_s}") %>
-<%#= render_qr_code("http://localhost:3000/businesses/#{@verificationqr.business.id}/qr_verification?validate?uid=#{current_user.id}") %>
-<%#= render_qr_code("http://localhost:3000/businesses/#{@verificationqr.business.id}/qr_verification?validate?uid=#{current_user.id}") %>
 <%#= link_to "paramstesting", business_verificationqr_path(@verificationqr, current_user.id.to_s) %><%#= render_qr_code("http://zelaproduct.herokuapp.com/businesses/#{@verificationqr.business_id}/qr_verification?verificationqr%5Bbusiness_id%5D=#{@verificationqr.business_id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}") %>
-<%#= render_qr_code(form_for(@verificationqr, url: business_verificationqr_path(@verificationqr, verificationqr: {id: @verificationqr.id, user_id: current_user.id, business_id: @verificationqr.business_id}), method: :patch) do end) %>
 <%#= render_qr_code(link_to "workingcodecopied", business_verificationqr_path(@verificationqr, verificationqr: {id: @verificationqr.id, user_id: current_user.id, business_id: @verificationqr.business_id}), method: :patch) %>
 <%#= render_qr_code(business_verificationqr_path(@verificationqr, verificationqr: {id: @verificationqr.id, user_id: current_user.id, business_id: @verificationqr.business_id}), method: :patch) %>
-<%#= form_for(@verificationqr, url: business_verificationqr_path(@verificationqr, verificationqr: {id: @verificationqr.id, user_id: current_user.id, business_id: @verificationqr.business_id}), method: :patch) do end %>
-<%#= render_qr_code("http://localhost:3000/businesses/#{@verificationqr.business.id}/qr_verification#{params.to_s}") %>
-<%#= render_qr_code("http://zelaproduct.herokuapp.com/#{@verificationqr.business.id}/qr_verification#{params.to_s}") %>
 <%#= link_to "newvalidationpathtesting...works!!!", business_qr_verification_validation_path(@verificationqr, verificationqr: {id: @verificationqr.id, user_id: current_user.id, business_id: @verificationqr.business_id}) %>
 </div>
 </section>

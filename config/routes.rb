@@ -10,8 +10,9 @@ Rails.application.routes.draw do
     resources :perks, except: :index
     resources :reviews, except: :index
     #singular resource for verification_qr?  Had no idea.  try it...
-    resource :verificationqr, only: [:show, :create, :update], :path => 'qr_verification' #Oh wait...lock it to owner only.
-    get 'validation', to: 'verificationqrs#update', as: 'qr_verification_validation'
+    resource :verificationqr, only: [:show, :create], :path => 'verification_qr_code' #Oh wait...lock it to owner only.
+    resources :interactionverifications, only: [:new, :show, :create] #:path => 'customers_interacted_with'
+    get 'validation', to: 'interactionverifications#create', as: 'qr_verification_validation'
   end
 
   #Wtf is this array?  I dont' even remember.  Got from Creaze.
@@ -21,8 +22,9 @@ Rails.application.routes.draw do
   resources :users, except: [:index ] do #Index necessary?
     resources :redemptions, only: [:show, :create, :update]
     resources :recommendationslists
-    resources :verificationqrs, only: [:index, :update], :path =>'verified_interactions' #Fix this up with views.
+    # resources :verificationqrs, only: [:index, :update], :path =>'verified_interactions' #Fix this up with views.
     resources :userqrs, only: [:index, :create, :update, :show], :path => 'verified_feedback_or_reviews'
+    resources :interactionverifications, only: [:index], :path => 'verified_interactions'
   end
 
   get 'about', to: 'pages#about', as: 'about'
