@@ -29,8 +29,10 @@ FML:  Filter so only a fresh one shows upon updates...?
 
 <div class="new ones">
 <%#= link_to "Experimenting with new model/route", business_qr_verification_validation_path(@interactionverification, interactionverification: {id: @interactionverification.id, user_id: current_user.id, business_id: @verificationqr.business_id}) %>
-<%= link_to "Experimenting with new model/route", business_qr_verification_validation_path(user_id: current_user.id, business_id: @business.id, interactionverification: Interactionverification.new) %>
+<%= link_to "New model/route working!", business_qr_verification_validation_path(user_id: current_user.id, business_id: @business.id, interactionverification: Interactionverification.new) %>
 <%#= link_to "Experimenting with new model/route", business_qr_verification_validation_path(@interactionverification.id: Interactionverification.new.id, user_id: current_user.id, business_id: @business.id) %>
+
+<%= render_qr_code("http://localhost:3000/businesses/businesses/#{@business.id}/validation?user_id=#{current_user.id}") %>
 
 <br>
 <%#= render_qr_code("http://localhost:3000/businesses/businesses/#{@verificationqr.business.id}/validation?verificationqr%5Bbusiness_id%5D=#{@business.id}&verificationqr%5Bid%5D=#{@verificationqr.id}&verificationqr%5Buser_id%5D=#{current_user.id}") %>  THESE TWO WORK MOTHER FUCKER!
