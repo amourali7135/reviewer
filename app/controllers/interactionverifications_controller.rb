@@ -7,20 +7,20 @@ class InteractionverificationsController < ApplicationController
   #   @interactionverifications = Interactionverification.all
   # end
 
-  def new
-    @interactionverification = Interactionverification.new(interactionverification_params)
-    # redirect_to business_qr_verification_validation_path(params)
-  end
+  # def new
+  #   @interactionverification = Interactionverification.new(interactionverification_params)
+  #   # redirect_to business_qr_verification_validation_path(params)
+  # end
 
   def show
-    # @interactionverification = Interactionverification.find(params[:id])
     @business = Business.find(params[:business_id])
+    @interactionverification = Interactionverification.find(params[:id])
     @url = request.path_info
     # raise
   end
 
   def create
-    raise
+    # raise
     @interactionverification = Interactionverification.new(interactionverification_params)
     @business = Business.find(params[:business_id])
     if
@@ -39,20 +39,20 @@ class InteractionverificationsController < ApplicationController
     end
   end
 
-  def update
-    # @business = Business.find(params[:business_id])
-    # # @url = request.path_info
-    # if current_user.present? && params.has_key?(:user_id) && params.has_key?(:business_id) && params.has_key?(:controller) && params.has_key?(:action) && request.path_info.include?('validation') && params.has_value?("interactionverifications")
-    #   @interactionverification.save(interactionverification_params)
-    #   flash[:notice] = "You've successfully verified your interaction with each other!"  #Ajax this later for the other side.
-    #   # redirect_to @business # Or user dashboard, figure out l8r after views are up.
-    #   redirect_to @business
-    # else
-    #   flash[:alert] = "There was an error, please try again!"
-    #   render 'show'
-    # end
+  # def update
+  #   # @business = Business.find(params[:business_id])
+  #   # # @url = request.path_info
+  #   # if current_user.present? && params.has_key?(:user_id) && params.has_key?(:business_id) && params.has_key?(:controller) && params.has_key?(:action) && request.path_info.include?('validation') && params.has_value?("interactionverifications")
+  #   #   @interactionverification.save(interactionverification_params)
+  #   #   flash[:notice] = "You've successfully verified your interaction with each other!"  #Ajax this later for the other side.
+  #   #   # redirect_to @business # Or user dashboard, figure out l8r after views are up.
+  #   #   redirect_to @business
+  #   # else
+  #   #   flash[:alert] = "There was an error, please try again!"
+  #   #   render 'show'
+  #   # end
 
-  end
+  # end
 
   private
 
