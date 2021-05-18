@@ -40,6 +40,7 @@ gem 'stackprof'
 gem 'faker'
 gem 'cloudinary'
 gem 'rqrcode'
+gem 'fuckmylife'
 
 
 
