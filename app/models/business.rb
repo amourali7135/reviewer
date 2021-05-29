@@ -30,6 +30,38 @@ class Business < ApplicationRecord
 
   private
 
+  def self.health_safety
+    []
+  end
+
+  def self.highlights
+    []
+  end
+
+  def self.accessibility
+    []
+  end
+
+  def self.offerings
+    []
+  end
+
+  def self.amenities
+    []
+  end
+
+  def self.payments
+    []
+  end
+
+  def self.delivery_options
+    []
+  end
+
+  def self.service_options
+    []
+  end
+
   def autocreateverificationqr
     Verificationqr.create(business_id: self.id)
   end

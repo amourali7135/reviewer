@@ -40,6 +40,9 @@ gem 'stackprof'
 gem 'faker'
 gem 'cloudinary'
 gem 'rqrcode' 
+# God fucking damnit.
+gem "pundit"
+
 
 
 

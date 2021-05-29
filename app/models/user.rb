@@ -17,6 +17,13 @@ class User < ApplicationRecord
   has_many :userqrs
   has_many :interactionverifications, dependent: :destroy
 
+  # Uncomment out after shit's ready to go dude.
+  # validates :city, presence: true
+  # validates :username, presence: true
+  # validates :bio, presence: true
+  # validates :first_name, presence: true
+  # validates :last_name, presence: true
+
   # Wait, is this here or in other two models?  Shit.
   # after_create :autocreateuserqr
 
