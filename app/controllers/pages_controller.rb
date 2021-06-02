@@ -24,9 +24,9 @@ class PagesController < ApplicationController
   def business_dashboard
     @business = Business.where(user_id: current_user.id)
     if
-      @business.exists? && @business.
+      @business.exists?
     else !current_user.business_owner_role
-      flash[:notice] = "Only business owners have access to business dashboards!"
+      flash[:notice] = "Only business owners can access business dashboards!"
       redirect_to root_path
     end
     #This is fucking huge dude, god damn.  Make it a better query.  

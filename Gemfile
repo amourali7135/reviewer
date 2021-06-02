@@ -40,8 +40,10 @@ gem 'stackprof'
 gem 'faker'
 gem 'cloudinary'
 gem 'rqrcode' 
-# God fucking damnit.
-gem "pundit"
+# God fucking damnit.  Suck it up and do it.  
+# gem "pundit"
+gem 'open-uri'
+
 
 
 

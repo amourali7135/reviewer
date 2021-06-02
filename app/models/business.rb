@@ -31,17 +31,19 @@ class Business < ApplicationRecord
   private
 
   def self.health_safety
-    []
+    ['Mask required', 'Temperature check required', 'Appointment required', 'Reservations required', 'Surfaces disinfected between visits', 'Staff wear masks', 'Staff get temperature checks', 'Social distancing enforced', 'Staff wears gloves', 'Hand sanitizer provided', 'Limited capacity', 'Temperature checks', 'Contactless menu']
   end
 
   def self.highlights
-    []
+    ['Virtual estimates during COVID-19', 'Remote services during COVID-19', 'Curbside pickup during COVID-19', 'Mobile services during COVID-19', 'Gift cards during COVID-19', 'Shipping during COVID-19', 'Curbside drop-off during COVID-19', 'Online classes during COVID-19', 'Drive-thru during COVID-19', 'Locally owned & operated', 'Certified professional', 'year years in business', 'Family-owned & operated', 'Free estimate', 'Available by appointment', 'Satisfaction guarantee', 'Offers customized solutions', 'Free consultations', 'Women-owned & operated', 'Offers commercial service', 'Established in year', 'Speaks Spanish', 'Walk-ins welcome', 'Discounts available', 'Budget friendly', '24/7 Availability', 'Emergency service', 'Free parking', 'Free WiFi', 'Eco-friendly', 'Luxury', 'Kid friendly', 'Offers payment plan', 'Consultations available', 'Beat or match price', 'LGBTQ friendly', 'Minority-owned & operated', 'Results guarantee', 'Veteran-owned & operated', 'Pet friendly', 'References available', 'Boutique', 'Wheelchair accessible', 'Fixed pricing', 'Hourly pricing', 'number employee', 'Speaks Mandarin' ]
   end
 
+  #what did this even mean?  
   def self.accessibility
-    []
+    ['Wheelchair accessible entrance', 'Wheelchair-accessible restroom', 'Wheelchair-accessible seating', 'Wheelchair-accessible parking' ,'Service animal friendly', 'Braille available', 'Large print available', 'Handicapped bathrooms available', 'Handicapped parking available', 'No stairs needed for entry', 'Elevator available', 'Automatic door', 'Gender neutral bathroom', 'Outdoor access only', 'Ramp', 'Sign language available', '']
   end
 
+  # This is the big one that you have to get from Yelp's giant list.
   def self.offerings
     []
   end
@@ -51,15 +53,15 @@ class Business < ApplicationRecord
   end
 
   def self.payments
-    []
+    ['Cash Only', 'Credit Cards Accepted', 'Debit Cards Accepted', 'Venmo Accepted', 'Zelle Accepted', 'Bitcoin/Crypto Accepted', 'Paypal accepted']
   end
 
   def self.delivery_options
-    []
+    ['In-house delivery available', 'Uber Eats available', 'Postmates available', 'DoorDash available', 'GrubHub available', 'Seamless available', 'Instacart available', 'No delivery options are available']
   end
 
   def self.service_options
-    []
+    ["Dine-in", "Takeout", "Delivery", "No-contact delivery", "Curbside pickup", 'Outdoor dining', ]
   end
 
   def autocreateverificationqr
