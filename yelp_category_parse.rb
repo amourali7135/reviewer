@@ -6,14 +6,19 @@ data_hash = JSON.parse(file)
 
 data_array = data_hash.to_a
 
-puts data_array[1]
+# puts data_array[0]
 
-data_hash.each do |category|
-    puts category["title"]
+category_array = []
+
+data_array.each do |category|
+     category_array << category["title"]
 end
 
-# puts data_hash[0]['title']
+better_array = []
 
-# puts data_hash.each do |key, value|
-#     puts "#{key}.to_a"
-# end
+puts category_array.split(', ')
+
+
+# better_array << category_array
+
+# puts better_array

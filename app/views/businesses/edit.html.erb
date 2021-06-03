@@ -1,2 +1,89 @@
 <h1>Businesses#edit</h1>
 <p>Find me in app/views/businesses/edit.html.erb</p>
+
+
+<div class="row align-items-center justify-content-center">
+   <div class="col-sm-8">
+     <div class="">
+      <img src="" alt="" class="img-fluid">
+    </div>
+    <div class="col card p-4 m-4 bg-light ">
+    <div class="row align-items-center justify-content-center">
+      <h1>Register your business for...copy!</h1>
+      <p>Easy and free to sign up!</p>
+    </div>
+
+      <%= simple_form_for @business do |f|%>
+      <%= f.input :name, label:  "What's the name of your business?" %>
+      <%= f.input :phone %>
+      <%= f.input :address%>
+      <%= f.input :about %>
+      <%= f.input :founded %>
+      <%= f.input :website, placeholder: 'www.yourwebsite.com', label: "Full Website URL" %>
+      <%= f.input :instagram, placeholder: 'www.instagram.com/', label: "Instagram Username" %>
+      <%= f.input :facebook, placeholder: 'www.facebook.com/', label: "Facebook Username" %>
+      <%= f.input :health_safety %>
+      <%= f.input :highlights %>
+      <%= f.input :accessibility %>
+      <%= f.input :offerings %>
+      <%= f.input :payments %>
+      <%= f.input :parking %>
+      <%= f.input :influencer_hub %>
+      <%= f.input :local_favorite %>
+      <%= f.input :restaurant %>
+      <%= f.input :delivery_options %>
+      <%= f.input :alcohol %>
+      <%= f.input :takeout %>
+      <%= f.input :vegan_vegetarian_friendly %>
+      <%= f.input :gluten_free_friendly %>
+      <%= f.input :pet_friendly %>
+      <%= f.input :scenic %>
+      <%= f.input :service_options %>
+      <%= f.input :reservations %>
+      <%= f.input :about %>
+      <%= f.input :age %>
+      <%= f.input :bio, as: :trix_editor, label: "Biography" %>
+      <%= f.input :tag_list, collection: Artist.media, input_html: {multiple: true, id: "artist_new_tags"}, label: "What kinds of creations do you create?" %>
+      <%= f.input :tag_list, collection: Artist.styles, input_html: {multiple: true, id: "artist_new_styles"}, label: "What types of styles are they?" %>
+      <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, input_html: {id: "artist_search_country"} %>
+      <%= f.input :city %>
+      <%= f.input :birth_place, label: "Country of birth if different", collection: CountryStateSelect.countries_collection.sort %>
+      <div style="text-align:center">
+      <table class="schedule-editor">
+        <thead>
+            <tr>
+            <th>Day</th>
+            <th>Opens at</th>
+            <th>Closes at</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% weekdays.each do |day| %>
+            <%= s.fields_for :regular_schedules, s.object.regular_schedules.find_or_initialize_by(weekday: day[:value]) do |sched| %>
+                <tr>
+                <td>
+                    <%= sched.hidden_field :weekday %>
+                    <div class="checkbox">
+                    <%= sched.check_box :_destroy, {checked: sched.object.persisted?}, "0", "1" %>
+                    <%= sched.label :_destroy, day[:label] %>
+                    </div>
+                </td>
+                <td>
+                    <%= sched.label :opens_at, class: "visually-hidden" %>
+                    <%= sched.time_field :opens_at %>
+                </td>
+                <td>
+                <%= sched.label :closes_at, class: "visually-hidden" %>
+                <%= sched.time_field :closes_at %>
+                </td>
+                </tr>
+            <% end %>
+            <% end %>
+        </tbody>
+        </table>
+      <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+      </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
