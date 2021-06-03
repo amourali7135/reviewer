@@ -1,5 +1,7 @@
 class Business < ApplicationRecord
   belongs_to :user, optional: true
+
+  acts_as_taggable_on :offerings
   
   has_many :perks, dependent: :destroy
   has_many :services, dependent: :destroy

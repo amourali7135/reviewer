@@ -43,9 +43,7 @@ gem 'rqrcode'
 # God fucking damnit.  Suck it up and do it.  
 # gem "pundit"
 gem 'open-uri'
-
-
-
+gem 'acts-as-taggable-on', '~> 7.0'
 
 
 group :development, :test do  gem 'pry-byebug'

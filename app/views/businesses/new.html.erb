@@ -21,7 +21,7 @@
       <%= f.input :health_safety %>
       <%= f.input :highlights %>
       <%= f.input :accessibility %>
-      <%= f.input :offerings %>
+      <%= f.input :offerings, collection: Business.offerings %>
       <%= f.input :payments %>
       <%= f.input :parking %>
       <%= f.input :influencer_hub %>
