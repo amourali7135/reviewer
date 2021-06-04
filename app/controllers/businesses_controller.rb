@@ -11,6 +11,7 @@ class BusinessesController < ApplicationController
     @business = Business.new(business_params)
     if @business.save
       flash[:notice] = "This business's profile was successfully created!"
+      # Redirect to verification ask page when ready
       redirect_to @business
     else
       render "new"

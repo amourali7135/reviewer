@@ -45,6 +45,8 @@ gem 'rqrcode'
 gem 'open-uri'
 gem 'acts-as-taggable-on', '~> 7.0'
 gem 'geocoder'
+gem 'cloudinary'
+
 
 
 

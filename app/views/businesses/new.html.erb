@@ -34,8 +34,9 @@
       <%= f.input :vegan_vegetarian_friendly, label: "Do you have a vegan + vegetarian friendly menu?" %>
       <%= f.input :gluten_free_friendly, label: "Do you have a gluten free friendly menu?" %>
       <%= f.input :scenic %>
-      <%= f.input :service_options, collection: Business.service_options, input_html: {multiple: true, id: "business_services_new", class: "select2"}, label: "What service options do you hava available?" %>
+      <%= f.input :service_options, collection: Business.service_options, input_html: {multiple: true, id: "business_services_new", class: "select2"}, label: "What service options do you have available?" %>
       <%= f.input :reservations, label: "Do you offer reservations?" %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Do you have any photos of the business?" %>
       <table class="schedule-editor">
         <thead>
             <tr>
