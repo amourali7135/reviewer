@@ -44,6 +44,8 @@ gem 'rqrcode'
 # gem "pundit"
 gem 'open-uri'
 gem 'acts-as-taggable-on', '~> 7.0'
+gem 'geocoder'
+
 
 
 group :development, :test do  gem 'pry-byebug'
