@@ -30,6 +30,7 @@ import "bootstrap";
 import { initSchedule } from '../plugins/init_schedule';
 import {  initAutocomplete  } from "../plugins/init_autocomplete";
 import { initSelect2} from "../plugins/init_select2";
+import { initRestaurantform } from "../plugins/init_restaurantform";
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -38,4 +39,5 @@ document.addEventListener('turbolinks:load', () => {
   initSchedule();
   initAutocomplete();
   initSelect2();
+  initRestaurantform();
 });

@@ -28,6 +28,7 @@
       <%= f.input :influencer_hub, label: "Do social media influencers love this place?" %>
       <%= f.input :local_favorite, label: "Do the locals love to come here?" %>
       <%= f.input :restaurant, label: "Is your business a restaurant?" %>
+      <div id="restaurant_details" style="display:none;">
       <%= f.input :delivery_options, collection: Business.delivery_options, input_html: {multiple: true, id: "business_deliveries_new", class: "select2"}, label: "What delivery options do you have available?" %>
       <%= f.input :alcohol, label: "Do you offer alcohol to customers?" %>
       <%= f.input :takeout, label: "Do you offer takeout for customers?" %>
@@ -36,6 +37,7 @@
       <%= f.input :scenic %>
       <%= f.input :service_options, collection: Business.service_options, input_html: {multiple: true, id: "business_services_new", class: "select2"}, label: "What service options do you have available?" %>
       <%= f.input :reservations, label: "Do you offer reservations?" %>
+      </div>
       <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Do you have any photos of the business?" %>
       <table class="schedule-editor">
         <thead>
@@ -76,3 +78,6 @@
       </div>
     </div>
   </div>
+
+
+
