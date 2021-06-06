@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_03_224625) do
+ActiveRecord::Schema.define(version: 2021_06_06_223101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -63,21 +73,25 @@ ActiveRecord::Schema.define(version: 2021_06_03_224625) do
     t.text "offerings"
     t.text "amenities"
     t.text "payments"
-    t.boolean "parking"
-    t.boolean "influencer_hub"
-    t.boolean "local_favorite"
+    t.boolean "parking", default: false
+    t.boolean "influencer_hub", default: false
+    t.boolean "local_favorite", default: false
     t.boolean "restaurant", default: false
     t.text "delivery_options"
-    t.boolean "alcohol"
-    t.boolean "takeout"
-    t.boolean "vegan_vegetarian_friendly"
-    t.boolean "gluten_free_friendly"
-    t.boolean "pet_friendly"
-    t.boolean "delivery"
-    t.boolean "kid_friendly"
-    t.boolean "scenic"
+    t.boolean "alcohol", default: false
+    t.boolean "takeout", default: false
+    t.boolean "vegan_vegetarian_friendly", default: false
+    t.boolean "gluten_free_friendly", default: false
+    t.boolean "pet_friendly", default: false
+    t.boolean "delivery", default: false
+    t.boolean "kid_friendly", default: false
+    t.boolean "scenic", default: false
     t.text "service_options"
-    t.boolean "reservations"
+    t.string "logo"
+    t.text "history"
+    t.text "intro"
+    t.text "specialties"
+    t.boolean "reservations", default: false
     t.boolean "verified", default: false
     t.boolean "permanently_closed", default: false
     t.bigint "user_id"
@@ -131,6 +145,20 @@ ActiveRecord::Schema.define(version: 2021_06_03_224625) do
     t.index ["business_id"], name: "index_perks_on_business_id"
   end
 
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.string "photo"
+    t.text "description"
+    t.integer "price_cents"
+    t.text "offerings"
+    t.date "completion"
+    t.string "time_taken"
+    t.bigint "business_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["business_id"], name: "index_projects_on_business_id"
+  end
+
   create_table "recommendationslists", force: :cascade do |t|
     t.string "title"
     t.text "summary"
@@ -170,16 +198,17 @@ ActiveRecord::Schema.define(version: 2021_06_03_224625) do
 
   create_table "reviews", force: :cascade do |t|
     t.string "title"
-    t.integer "rating"
-    t.text "content"
+    t.integer "business_rating"
+    t.text "business_review"
     t.integer "useful"
     t.integer "funny"
     t.integer "cool"
     t.integer "questionable"
-    t.integer "food_rating"
     t.integer "service"
     t.integer "value"
     t.integer "atmosphere"
+    t.integer "service_rating"
+    t.text "service_review"
     t.string "photo"
     t.boolean "proof"
     t.text "followup"
@@ -294,6 +323,7 @@ ActiveRecord::Schema.define(version: 2021_06_03_224625) do
   add_foreign_key "ownerverificationrequests", "businesses"
   add_foreign_key "ownerverificationrequests", "users"
   add_foreign_key "perks", "businesses"
+  add_foreign_key "projects", "businesses"
   add_foreign_key "recommendationslists", "businesses"
   add_foreign_key "recommendationslists", "services"
   add_foreign_key "recommendationslists", "users"

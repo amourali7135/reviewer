@@ -1,4 +1,6 @@
 class Review < ApplicationRecord
+  has_rich_text :content
+  
   belongs_to :business
   belongs_to :service
   belongs_to :user

@@ -6,18 +6,6 @@ const initRestaurantform = () => {
             else {
                 document.getElementById("restaurant_details").style.display = "none"; }
             });
-        }
-        
-        
-        
-        // if (restaurantCheckbox.checked) {
-        //     document.getElementById("restaurant_details").style.display = "block"; }
-        //     else {
-        //         document.getElementById("restaurant_details").style.display = "none"; }
-        //         console.log("hello");
-        
-        
-        
-        
+        }        
         
         export { initRestaurantform };

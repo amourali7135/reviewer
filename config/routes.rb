@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   resources :businesses, except: :destroy, :path => 'businesses' do
     resources :services, :path => 'service'
     resources :feedbacks, :path => 'customer_feedback'
-    resources :perks, except: :index
+    resources :perks, except: :index #Perks in area?
     resources :reviews, except: :index
+    resources :projects, except: :index
     #singular resource for verification_qr?  Had no idea.  try it...
     resource :verificationqr, only: [:show, :create], :path => 'verification_qr_code' #Oh wait...lock it to owner only.
     resources :interactionverifications, only: [ :show, :create] #:path => 'customers_interacted_with'

@@ -1,7 +1,3 @@
-<h1>Businesses#edit</h1>
-<p>Find me in app/views/businesses/edit.html.erb</p>
-
-
 <div class="row align-items-center justify-content-center">
    <div class="col-sm-8">
      <div class="">
@@ -15,40 +11,34 @@
 
       <%= simple_form_for @business do |f|%>
       <%= f.input :name, label:  "What's the name of your business?" %>
-      <%= f.input :phone %>
-      <%= f.input :address%>
-      <%= f.input :about %>
-      <%= f.input :founded %>
+      <%= f.input :phone, label: "What's the phone number of your business?" %>
+      <%= f.input :address, id: "business_address", label: "What's the address of the business?  If there's no physical address, please put in the city that's serviced." %>
+      <%= f.input :about, label: "Tell us about the business." %>
+      <%= f.input :founded, label: "What year was your business founded?" %>
       <%= f.input :website, placeholder: 'www.yourwebsite.com', label: "Full Website URL" %>
       <%= f.input :instagram, placeholder: 'www.instagram.com/', label: "Instagram Username" %>
       <%= f.input :facebook, placeholder: 'www.facebook.com/', label: "Facebook Username" %>
-      <%= f.input :health_safety %>
-      <%= f.input :highlights %>
-      <%= f.input :accessibility %>
-      <%= f.input :offerings %>
-      <%= f.input :payments %>
-      <%= f.input :parking %>
-      <%= f.input :influencer_hub %>
-      <%= f.input :local_favorite %>
-      <%= f.input :restaurant %>
-      <%= f.input :delivery_options %>
-      <%= f.input :alcohol %>
-      <%= f.input :takeout %>
-      <%= f.input :vegan_vegetarian_friendly %>
-      <%= f.input :gluten_free_friendly %>
-      <%= f.input :pet_friendly %>
+       <%= f.input :pet_friendly, label: "Is your business pet-friendly?" %>
+      <%= f.input :health_safety, collection: Business.health_safety, input_html: {multiple: true, id: "business_health_new", class: "select2"}, label: "What health related precautions is your business taking?" %>
+      <%= f.input :highlights, collection: Business.highlights, input_html: {multiple: true, id: "business_highlights_new", class: "select2"}, label: "What are some highlights of your business?" %>
+      <%= f.input :accessibility, collection: Business.accessibility, input_html: {multiple: true, id: "business_accessibility_new", class: "select2"}, label: "What options does your business provide for the handicapped and disabled??" %>
+      <%= f.input :offerings, collection: Business.offerings, input_html: {multiple: true, id: "business_offerings_new", class: "select2"}, label: "What does your business have to offer?" %>
+      <%= f.input :payments, collection: Business.payments, input_html: {multiple: true, id: "business_payments_new", class: "select2"}, label: "What type of payments does your business accept?" %>
+      <%= f.input :parking, label: "Is there parking available?" %>
+      <%= f.input :influencer_hub, label: "Do social media influencers love this place?" %>
+      <%= f.input :local_favorite, label: "Do the locals love to come here?" %>
+      <%= f.input :restaurant, label: "Is your business a restaurant?" %>
+      <div id="restaurant_details" style="display:none;">
+      <%= f.input :delivery_options, collection: Business.delivery_options, input_html: {multiple: true, id: "business_deliveries_new", class: "select2"}, label: "What delivery options do you have available?" %>
+      <%= f.input :alcohol, label: "Do you offer alcohol to customers?" %>
+      <%= f.input :takeout, label: "Do you offer takeout for customers?" %>
+      <%= f.input :vegan_vegetarian_friendly, label: "Do you have a vegan + vegetarian friendly menu?" %>
+      <%= f.input :gluten_free_friendly, label: "Do you have a gluten free friendly menu?" %>
       <%= f.input :scenic %>
-      <%= f.input :service_options %>
-      <%= f.input :reservations %>
-      <%= f.input :about %>
-      <%= f.input :age %>
-      <%= f.input :bio, as: :trix_editor, label: "Biography" %>
-      <%= f.input :tag_list, collection: Artist.media, input_html: {multiple: true, id: "artist_new_tags"}, label: "What kinds of creations do you create?" %>
-      <%= f.input :tag_list, collection: Artist.styles, input_html: {multiple: true, id: "artist_new_styles"}, label: "What types of styles are they?" %>
-      <%= f.input :country, collection: CountryStateSelect.countries_collection.sort, input_html: {id: "artist_search_country"} %>
-      <%= f.input :city %>
-      <%= f.input :birth_place, label: "Country of birth if different", collection: CountryStateSelect.countries_collection.sort %>
-      <div style="text-align:center">
+      <%= f.input :service_options, collection: Business.service_options, input_html: {multiple: true, id: "business_services_new", class: "select2"}, label: "What service options do you have available?" %>
+      <%= f.input :reservations, label: "Do you offer reservations?" %>
+      </div>
+      <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Do you have any photos of the business?" %>
       <table class="schedule-editor">
         <thead>
             <tr>
@@ -59,7 +49,7 @@
         </thead>
         <tbody>
             <% weekdays.each do |day| %>
-            <%= s.fields_for :regular_schedules, s.object.regular_schedules.find_or_initialize_by(weekday: day[:value]) do |sched| %>
+            <%= f.simple_fields_for :schedules, f.object.schedules.find_or_initialize_by(weekday: day[:value]) do |sched| %>
                 <tr>
                 <td>
                     <%= sched.hidden_field :weekday %>
@@ -81,9 +71,13 @@
             <% end %>
         </tbody>
         </table>
+      <div style="text-align:center">
       <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
       </div>
       <% end %>
       </div>
     </div>
   </div>
+
+
+

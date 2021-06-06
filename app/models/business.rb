@@ -31,6 +31,7 @@ class Business < ApplicationRecord
   # validates :restaurant, presence: true
   
   has_many_attached :photos
+  # has_one_attached :photo, as: :logo  how?
   
   #Callback to automatically create a QR code for them.
   after_create :autocreateverificationqr
@@ -46,16 +47,18 @@ class Business < ApplicationRecord
   end
   
   def self.health_safety
-    ['Mask required', 'Temperature check required', 'Appointment required', 'Reservations required', 'Surfaces disinfected between visits', 'Staff wear masks', 'Staff get temperature checks', 'Social distancing enforced', 'Staff wears gloves', 'Hand sanitizer provided', 'Limited capacity', 'Temperature checks', 'Contactless menu']
+    ["Appointment required","Contactless menu","Hand sanitizer provided","Limited capacity","Mask required","Reservations required", "Social distancing enforced", "Staff get temperature checks", "Staff wear masks", "Staff wears gloves", "Surfaces disinfected between visits", "Temperature check required", "Temperature checks"]
+     
   end
   
   def self.highlights
-    ['Virtual estimates during COVID-19', 'Remote services during COVID-19', 'Curbside pickup during COVID-19', 'Mobile services during COVID-19', 'Gift cards during COVID-19', 'Shipping during COVID-19', 'Curbside drop-off during COVID-19', 'Online classes during COVID-19', 'Drive-thru during COVID-19', 'Locally owned & operated', 'Certified professional', 'year years in business', 'Family-owned & operated', 'Free estimate', 'Available by appointment', 'Satisfaction guarantee', 'Offers customized solutions', 'Free consultations', 'Women-owned & operated', 'Offers commercial service', 'Established in year', 'Speaks Spanish', 'Walk-ins welcome', 'Discounts available', 'Budget friendly', '24/7 Availability', 'Emergency service', 'Free parking', 'Free WiFi', 'Eco-friendly', 'Luxury', 'Kid friendly', 'Offers payment plan', 'Consultations available', 'Beat or match price', 'LGBTQ friendly', 'Minority-owned & operated', 'Results guarantee', 'Veteran-owned & operated', 'Pet friendly', 'References available', 'Boutique', 'Wheelchair accessible', 'Fixed pricing', 'Hourly pricing', 'number employee', 'Speaks Mandarin' ]
+    ["24/7 Availability", "Available by appointment", "Beat or match price", "Boutique", "Budget friendly", "Certified professional", "Consultations available", "Curbside drop-off during COVID-19", "Curbside pickup during COVID-19", "Discounts available", "Drive-thru during COVID-19", "Eco-friendly", "Emergency service", "Established in year", "Family-owned & operated", "Fixed pricing", "Free WiFi", "Free consultations", "Free estimate", "Free parking", "Gift cards during COVID-19", "Hourly pricing", "Kid friendly", "LGBTQ friendly", "Locally owned & operated", "Luxury", "Minority-owned & operated", "Mobile services during COVID-19", "Offers commercial service", "Offers customized solutions", "Offers payment plan", "Online classes during COVID-19", "Pet friendly", "References available", "Remote services during COVID-19", "Results guarantee", "Satisfaction guarantee", "Shipping during COVID-19", "Speaks Mandarin", "Speaks Spanish", "Veteran-owned & operated", "Virtual estimates during COVID-19", "Walk-ins welcome", "Wheelchair accessible", "Women-owned & operated", "number employee", "year years in business"]
   end
   
   #what did this even mean?  
   def self.accessibility
-    ['Wheelchair accessible entrance', 'Wheelchair-accessible restroom', 'Wheelchair-accessible seating', 'Wheelchair-accessible parking' ,'Service animal friendly', 'Braille available', 'Large print available', 'Handicapped bathrooms available', 'Handicapped parking available', 'No stairs needed for entry', 'Elevator available', 'Automatic door', 'Gender neutral bathroom', 'Outdoor access only', 'Ramp', 'Sign language available']
+    ["Automatic door", "Braille available", "Elevator available", "Gender neutral bathroom", "Handicapped bathrooms available", "Handicapped parking available", "Large print available", "No stairs needed for entry", "Outdoor access only", "Ramp", "Service animal friendly", "Sign language available", "Wheelchair accessible entrance", "Wheelchair-accessible parking", "Wheelchair-accessible restroom", "Wheelchair-accessible seating"]
+     
   end
   
   # Test this out later on.
@@ -68,15 +71,15 @@ class Business < ApplicationRecord
   end
   
   def self.payments
-    ['Cash Only', 'Credit Cards Accepted', 'Debit Cards Accepted', 'Venmo Accepted', 'Zelle Accepted', 'Bitcoin/Crypto Accepted', 'Paypal accepted']
+    ["Bitcoin/Crypto Accepted", "Cash Only", "Credit Cards Accepted", "Debit Cards Accepted", "Paypal accepted", "Venmo Accepted", "Zelle Accepted"]
   end
   
   def self.delivery_options
-    ['In-house delivery available', 'Uber Eats available', 'Postmates available', 'DoorDash available', 'GrubHub available', 'Seamless available', 'Instacart available', 'No delivery options are available']
+    ["DoorDash available", "GrubHub available", "In-house delivery available", "Instacart available", "No delivery options are available", "Postmates available", "Seamless available", "Uber Eats available"]
   end
   
   def self.service_options
-    ["Dine-in", "Takeout", "Delivery", "No-contact delivery", "Curbside pickup", 'Outdoor dining' ]
+    ["Curbside pickup", "Delivery", "Dine-in", "No-contact delivery", "Outdoor dining", "Takeout"]
   end
   
   def autocreateverificationqr

@@ -20,21 +20,25 @@ class CreateBusinesses < ActiveRecord::Migration[6.0]
       t.text :offerings
       t.text :amenities
       t.text :payments
-      t.boolean :parking
-      t.boolean :influencer_hub
-      t.boolean :local_favorite
+      t.boolean :parking, default: false
+      t.boolean :influencer_hub, default: false
+      t.boolean :local_favorite, default: false
       t.boolean :restaurant, default: false
       t.text :delivery_options
-      t.boolean :alcohol
-      t.boolean :takeout
-      t.boolean :vegan_vegetarian_friendly
-      t.boolean :gluten_free_friendly
-      t.boolean :pet_friendly
-      t.boolean :delivery
-      t.boolean :kid_friendly
-      t.boolean :scenic
+      t.boolean :alcohol, default: false
+      t.boolean :takeout, default: false
+      t.boolean :vegan_vegetarian_friendly, default: false
+      t.boolean :gluten_free_friendly, default: false
+      t.boolean :pet_friendly, default: false
+      t.boolean :delivery, default: false
+      t.boolean :kid_friendly, default: false
+      t.boolean :scenic, default: false
       t.text :service_options
-      t.boolean :reservations
+      t.string :logo
+      t.text :history
+      t.text :intro
+      t.text :specialties
+      t.boolean :reservations, default: false
       t.boolean :verified, default: false
       t.boolean :permanently_closed, default: false
       t.references :user, null: true, foreign_key: true #null: true or false with optional?
