@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @business = Business.find(params[:business_id])
     @review = Review.new
   end
 

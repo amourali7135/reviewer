@@ -5,6 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+puts "Destroy everything"
+
+User.destroy_all
+Business.destroy_all
+Service.destroy_all
+
+
 puts 'Creating 2 fake users...'
 user = User.new(
   email: 'amir@mourali.com',
@@ -52,7 +61,7 @@ service = Service.new(
   name: "service 1", 
   description: Faker::Lorem.sentences(number: 1),
   price_cents: Faker::Commerce.price,
-  remote_photo_url: Faker::Avatar.image
+  # remote_photo_url: Faker::Avatar.image,
   business_id: Business.pluck(:id).sample
 )
 service.save!
@@ -61,7 +70,7 @@ service = Service.new(
   name: "service 1", 
   description: Faker::Lorem.sentences(number: 1),
   price_cents: Faker::Commerce.price,
-  remote_photo_url: Faker::Avatar.image
+  # remote_photo_url: Faker::Avatar.image,
   business_id: Business.pluck(:id).sample
 )
 service.save!
@@ -70,7 +79,7 @@ service = Service.new(
   name: "service 1", 
   description: Faker::Lorem.sentences(number: 1),
   price_cents: Faker::Commerce.price,
-  remote_photo_url: Faker::Avatar.image
+  # remote_photo_url: Faker::Avatar.image,
   business_id: Business.pluck(:id).sample
 )
 service.save!
@@ -79,7 +88,7 @@ service = Service.new(
   name: "service 1", 
   description: Faker::Lorem.sentences(number: 1),
   price_cents: Faker::Commerce.price,
-  remote_photo_url: Faker::Avatar.image
+  # remote_photo_url: Faker::Avatar.image,
   business_id: Business.pluck(:id).sample
 )
 service.save!

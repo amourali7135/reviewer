@@ -11,6 +11,7 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.integer :service
       t.integer :value
       t.integer :atmosphere
+      t.
       t.integer :service_rating
       t.text :service_review
       t.string :photo
