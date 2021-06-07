@@ -11,6 +11,8 @@ const initSelect2 = () => {
   $("#business_accessibility_new").select2({ width: '100%' });  
   $("#business_highlights_new").select2({ width: '100%' });  
   $("#business_health_new").select2({ width: '100%' });    
+  $("#review_service_id").select2({ width: '100%' });    
+  
   // (~ document.querySelectorAll)
 };
 

@@ -207,10 +207,11 @@ ActiveRecord::Schema.define(version: 2021_06_06_223101) do
     t.integer "service"
     t.integer "value"
     t.integer "atmosphere"
+    t.boolean "service_review_too", default: false
     t.integer "service_rating"
     t.text "service_review"
     t.string "photo"
-    t.boolean "proof"
+    t.boolean "proof", default: false
     t.text "followup"
     t.bigint "business_id", null: false
     t.bigint "service_id", null: false

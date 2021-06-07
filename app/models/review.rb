@@ -6,8 +6,8 @@ class Review < ApplicationRecord
   belongs_to :user
 
   validates :title, presence: true
-  validates :rating, presence: true
-  validates :content, presence: true
+  validates :business_rating, presence: true
+  validates :business_review, presence: true
   validates :photo, presence: true
 
   has_many_attached :photos  

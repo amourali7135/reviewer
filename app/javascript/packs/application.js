@@ -35,6 +35,7 @@ import {  initAutocomplete  } from "../plugins/init_autocomplete";
 import { initSelect2} from "../plugins/init_select2";
 import { initStarRating } from '../plugins/init_star_rating';
 import { initRestaurantform } from "../plugins/init_restaurantform";
+import { initReviewform } from "../plugins/init_reviewform";
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -45,6 +46,7 @@ document.addEventListener('turbolinks:load', () => {
   initSelect2();
   initStarRating();
   initRestaurantform();
+  initReviewform();
 });
 
 require("trix")

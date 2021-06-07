@@ -10,6 +10,7 @@ class ReviewsController < ApplicationController
   def new
     @business = Business.find(params[:business_id])
     @review = Review.new
+    # raise
   end
 
   def create
@@ -52,7 +53,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit( :title, :rating, :content, :userful, :funny, :cool, :questionable, :food_rating, :service, :value, :atmosphere, :proof, photos: [] )
+    params.require(:review).permit( :title, :business_rating, :business_review, :useful, :funny, :cool, :questionable, :service_rating, :service_review, :service_id, :value, :atmosphere, :proof, photos: [] )
   end
 
 end
