@@ -9,7 +9,7 @@ const initReviewform = () => {
                     document.getElementById("service_review_part").style.display = "none"; }
                 });
             }        
-            console.log("mofo")
+            // console.log("mofo")
         }
         
         export { initReviewform };

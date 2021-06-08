@@ -8,7 +8,7 @@ const initRestaurantform = () => {
                     document.getElementById("restaurant_details").style.display = "none"; }
                 });
             }   
-            console.log("this shit again")
+            // console.log("this shit again")
         }     
         
         export { initRestaurantform };
