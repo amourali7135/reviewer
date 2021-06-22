@@ -8,13 +8,15 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @business = Business.find(params[:business_id])
     @review = Review.new
+    @business = Business.find(params[:business_id])
+    # @services = @business.services
     # raise
   end
 
   def create
     @review = Review.new(review_params)
+    @business = Business.find(params[:business_id])
     if @review.save
       flash[:notice] = "This review was successfully created!"
       redirect_to @review
@@ -53,7 +55,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit( :title, :business_rating, :business_review, :useful, :funny, :cool, :questionable, :service_rating, :service_review, :service_id, :value, :atmosphere, :proof, photos: [] )
+    params.require(:review).permit( :title, :business_rating, :business_review, :useful, :funny, :cool, :questionable, :service_rating, :service_review, :service_id, :value, :atmosphere, :proof, :service, :service_review_too, photos: [] )
   end
 
 end

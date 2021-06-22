@@ -1,5 +1,7 @@
 class Service < ApplicationRecord
   belongs_to :business
+  has_many :reviews#, optional: true
+
 
   validates :name, presence: true
   validates :description, presence: true

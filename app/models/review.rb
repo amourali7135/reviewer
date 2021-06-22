@@ -1,5 +1,6 @@
 class Review < ApplicationRecord
-  has_rich_text :content
+  has_rich_text :business_review
+  has_rich_text :service_review
   
   belongs_to :business
   belongs_to :service
@@ -7,11 +8,14 @@ class Review < ApplicationRecord
 
   validates :title, presence: true
   validates :business_rating, presence: true
-  validates :business_review, presence: true
+  validates :business_review, presence: true, length: { minimum: 10 }
   validates :photo, presence: true
 
   has_many_attached :photos  
   has_many :userqrs
+
+  # accepts_nested_attributes_for :services, :allow_destroy => :true
+
 
   # after_create :autocreateuserqr
 

@@ -1,3 +1,36 @@
-<h1>Reviews#edit</h1>
-<p>Find me in app/views/reviews/edit.html.erb</p>
-Remember to put in the follow up text section here only above the original review!
+<div class="row align-items-center justify-content-center">
+   <div class="col-sm-8">
+     <div class="">
+      <img src="" alt="" class="img-fluid">
+    </div>
+    <div class="col card p-4 m-4 bg-light ">
+    <div class="row align-items-center justify-content-center">
+      <h1>Review the!</h1>
+      <p>Easy and free to sign up!</p>
+
+    </div>
+      <%= simple_form_for [@business, @review] do |f|%>
+      <%= f.input :title, label:  "What would you like to name your review?" %>
+      <%= f.input :business_rating, collection: (1..5).to_a, label: "Please rate your overall experience with this business" %>
+      <%= f.input :followup, as: :rich_text_area, label: <strong>"Would you like to provide a follow-up review?" </strong>%>
+      <%= f.input :business_review, as: :rich_text_area, label: "Review your experience" %>
+      <%= f.input :service, collection: (1..5).to_a, label: "Rate your service" %>
+      <%= f.input :value, collection: (1..5).to_a, label: "Rate your value" %>
+      <%= f.input :atmosphere, collection: (1..5).to_a, label: "Rate your atmosphere" %>
+      <%= f.input :service_review_too, label:  "Would you also like to review the service that you received?" %>
+      <div id="service_review_part" style="display:none;">
+      <%= f.input :service_id, label: "Which service did you receive?", collection: @business.services %>
+      <%= f.input :service_rating, collection: (1..5).to_a, label: "Rate your service" %>
+      <%= f.input :service_review, as: :rich_text_area, label: "Review your service" %>
+      </div>
+      <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Please attach photos that can prove you interacted with this business" %>
+      <div style="text-align:center">
+      <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+      </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+
+
+

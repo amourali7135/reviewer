@@ -12,13 +12,14 @@
 
     </div>
       <%= simple_form_for [@business, @review] do |f|%>
-      <%= f.input :title, label:  "What would you like to name your review?" %>
+      <%#= f.hidden_field :service_id, :value => @review.service.id %>
+      <%= f.input :title, label:  "What would you like to title your review?" %>
       <%= f.input :business_rating, collection: (1..5).to_a, label: "Please rate your overall experience with this business" %>
-      <%= f.input :business_review, as: :rich_text_area, label: "Review your experience" %>
-      <%= f.input :service, collection: (1..5).to_a, label: "Rate your service" %>
-      <%= f.input :value, collection: (1..5).to_a, label: "Rate your value" %>
+      <%= f.input :business_review, as: :rich_text_area, label: "Review your experience in more detail" %>
+      <%#= f.input :service, collection: (1..5).to_a, label: "Rate your overall service" %>
+      <%= f.input :value, collection: (1..5).to_a, label: "Rate the value of the business + their services" %>
       <%= f.input :atmosphere, collection: (1..5).to_a, label: "Rate your atmosphere" %>
-      <%= f.input :service_review_too, label:  "Would you also like to review the service that you received?" %>
+      <%= f.input :service_review_too, label:  "Would you also like to review the specific service that you received?" %>
       <div id="service_review_part" style="display:none;">
       <%= f.input :service_id, label: "Which service did you receive?", collection: @business.services %>
       <%= f.input :service_rating, collection: (1..5).to_a, label: "Rate your service" %>
