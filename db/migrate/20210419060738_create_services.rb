@@ -4,7 +4,7 @@ class CreateServices < ActiveRecord::Migration[6.0]
       t.string :name
       t.text :description
       t.integer :price_cents
-      t.string :photo
+      # t.string :photo
       t.references :business, null: false, foreign_key: true
 
       t.timestamps

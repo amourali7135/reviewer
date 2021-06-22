@@ -22,6 +22,7 @@ class ReviewsController < ApplicationController
       redirect_to @review
     else
       render "new"
+      # raise
     end
   end
 

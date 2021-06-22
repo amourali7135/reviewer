@@ -5,7 +5,7 @@ class CreateRecommendationslists < ActiveRecord::Migration[6.0]
       t.text :summary
       t.string :city
       t.text :descriptions
-      t.string :photo
+      # t.string :photo
       t.integer :rating
       t.references :user, null: false, foreign_key: true
       t.references :business, null: false, foreign_key: true

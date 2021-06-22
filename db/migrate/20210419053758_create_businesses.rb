@@ -7,7 +7,7 @@ class CreateBusinesses < ActiveRecord::Migration[6.0]
       t.float :latitude
       t.float :longitude
       t.integer :price_range
-      t.string :photo
+      # t.string :photo
       t.boolean :claimed, default: false
       t.text :about
       t.date :founded

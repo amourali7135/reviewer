@@ -14,7 +14,7 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.boolean :service_review_too, default: false
       t.integer :service_rating
       t.text :service_review
-      t.string :photo
+      # t.string :photo
       t.boolean :proof, default: false
       t.text :followup
       t.references :business, null: false, foreign_key: true

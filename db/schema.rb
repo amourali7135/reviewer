@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(version: 2021_06_06_223101) do
     t.float "latitude"
     t.float "longitude"
     t.integer "price_range"
-    t.string "photo"
     t.boolean "claimed", default: false
     t.text "about"
     t.date "founded"
@@ -104,7 +103,6 @@ ActiveRecord::Schema.define(version: 2021_06_06_223101) do
     t.string "title"
     t.integer "rating"
     t.text "advice"
-    t.string "photo"
     t.boolean "proof"
     t.date "date_interacted"
     t.bigint "business_id", null: false
@@ -147,7 +145,6 @@ ActiveRecord::Schema.define(version: 2021_06_06_223101) do
 
   create_table "projects", force: :cascade do |t|
     t.string "title"
-    t.string "photo"
     t.text "description"
     t.integer "price_cents"
     t.text "offerings"
@@ -164,7 +161,6 @@ ActiveRecord::Schema.define(version: 2021_06_06_223101) do
     t.text "summary"
     t.string "city"
     t.text "descriptions"
-    t.string "photo"
     t.integer "rating"
     t.bigint "user_id", null: false
     t.bigint "business_id", null: false
@@ -210,7 +206,6 @@ ActiveRecord::Schema.define(version: 2021_06_06_223101) do
     t.boolean "service_review_too", default: false
     t.integer "service_rating"
     t.text "service_review"
-    t.string "photo"
     t.boolean "proof", default: false
     t.text "followup"
     t.bigint "business_id", null: false
@@ -237,7 +232,6 @@ ActiveRecord::Schema.define(version: 2021_06_06_223101) do
     t.string "name"
     t.text "description"
     t.integer "price_cents"
-    t.string "photo"
     t.bigint "business_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -294,7 +288,6 @@ ActiveRecord::Schema.define(version: 2021_06_06_223101) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "reputation"
     t.string "city"
-    t.string "photo"
     t.string "username"
     t.text "bio"
     t.integer "level"

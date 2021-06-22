@@ -51,6 +51,8 @@ GEM
       activerecord (>= 4.2)
       activesupport (>= 4.2)
       railties (>= 4.2)
+    active_storage_validations (0.9.4)
+      rails (>= 5.2.0)
     activejob (6.1.3.1)
       activesupport (= 6.1.3.1)
       globalid (>= 0.3.6)
@@ -370,6 +372,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_record_doctor
+  active_storage_validations
   acts-as-taggable-on (~> 7.0)
   autoprefixer-rails
   better_errors

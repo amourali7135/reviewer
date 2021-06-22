@@ -2,7 +2,7 @@ class AddFieldsToUsers < ActiveRecord::Migration[6.1]
   def change
     add_column :users, :reputation, :string
     add_column :users, :city, :string
-    add_column :users, :photo, :string
+    # add_column :users, :photo, :string
     add_column :users, :username, :string
     add_column :users, :bio, :text
     add_column :users, :level, :integer

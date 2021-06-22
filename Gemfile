@@ -46,6 +46,9 @@ gem 'open-uri'
 gem 'acts-as-taggable-on', '~> 7.0'
 gem 'geocoder'
 gem 'cloudinary'
+# You need proof via photo validations, I hope that this shit works long term.
+gem 'active_storage_validations'
+
 
 
 
