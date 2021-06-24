@@ -232,6 +232,9 @@ ActiveRecord::Schema.define(version: 2021_06_06_223101) do
     t.string "name"
     t.text "description"
     t.integer "price_cents"
+    t.text "food_taggings"
+    t.text "service_taggings"
+    t.boolean "food", default: false
     t.bigint "business_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

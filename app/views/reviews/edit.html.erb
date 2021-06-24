@@ -1,18 +1,7 @@
 <div class="row align-items-center justify-content-center">
-   <div class="col-sm-8">
-     <div class="">
-      <img src="" alt="" class="img-fluid">
-    </div>
-    <div class="col card p-4 m-4 bg-light ">
-    <div class="row align-items-center justify-content-center">
-      <h1>Review the!</h1>
-      <p>Easy and free to sign up!</p>
-
-    
-
-    </div>
+  <div class="col-sm-8 card p-4 m-4 bg-light ">
+      <h1>Would you like to update your review?</h1>
       <%= simple_form_for [@business, @review] do |f|%>
-      <%#= f.hidden_field :service_id, :value => @review.service.id %>
       <%= f.input :title, label:  "What would you like to title your review?", placeholder: 'Best cafe ever!' %>
       <%= f.input :followup, as: :rich_text_area, label: "Would you like to provide a follow-up review?", placeholder: 'On second thought, after returning here, I have to change my original rating for several reasons...' %>
       <%= f.input :business_rating, collection: (1..5).to_a, label: "Please rate your overall experience with this business" %>
@@ -26,21 +15,10 @@
       <%= f.input :service_rating, collection: (1..5).to_a, label: "Rate the service overall" %>
       <%= f.input :service_review, as: :rich_text_area, label: "Review the service", placeholder: 'This has to be the best mocha latte in the entire world.  Nothing else out there even comes close!' %>
       </div>
-      <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Please attach photos as proof that you interacted with this business" %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Please attach at least one photo as proof that you interacted with this business", error: 'You need to include at least one photo' %>
       <div style="text-align:center">
       <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
       </div>
       <% end %>
       </div>
     </div>
-  </div>
-
-
-
-
-
-
-  
-
-
-

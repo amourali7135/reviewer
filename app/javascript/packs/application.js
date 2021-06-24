@@ -37,6 +37,7 @@ import { initStarRating } from '../plugins/init_star_rating';
 import { initRestaurantform } from "../plugins/init_restaurantform";
 import { initReviewform } from "../plugins/init_reviewform";
 import { initAttachmentnone } from "../plugins/init_attachmentnone";
+import { initServiceform } from "../plugins/init_serviceform";
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -49,6 +50,7 @@ document.addEventListener('turbolinks:load', () => {
   initRestaurantform();
   initReviewform();
   initAttachmentnone();
+  initServiceform();
 });
 
 require("trix")

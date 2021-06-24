@@ -2,12 +2,17 @@ class Service < ApplicationRecord
   belongs_to :business
   has_many :reviews#, optional: true
 
+  acts_as_taggable_on :food_taggings, :service_taggings
 
   validates :name, presence: true
   validates :description, presence: true
   validates :price_cents, presence: true
-  # validates :photo, presence: true for now
+  # validates :photos, attached: true#, limit: { min: 1, max: 10 }
 
   has_many_attached :photos
+
+  def self.foodlist
+    ["Burger", "French fries", "Sushi"]
+  end
 
 end

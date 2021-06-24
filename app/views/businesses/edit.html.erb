@@ -1,14 +1,6 @@
 <div class="row align-items-center justify-content-center">
-   <div class="col-sm-8">
-     <div class="">
-      <img src="" alt="" class="img-fluid">
-    </div>
-    <div class="col card p-4 m-4 bg-light ">
-    <div class="row align-items-center justify-content-center">
-      <h1>Register your business for...copy!</h1>
-      <p>Easy and free to sign up!</p>
-    </div>
-
+  <div class="col-sm-8 card p-4 m-4 bg-light ">
+      <h1>Edit your business information</h1>
       <%= simple_form_for @business do |f|%>
       <%= f.input :name, label:  "What's the name of your business?" %>
       <%= f.input :phone, label: "What's the phone number of your business?" %>

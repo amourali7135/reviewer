@@ -1,2 +1,25 @@
-<h1>Services#edit</h1>
-<p>Find me in app/views/services/edit.html.erb</p>
+<div class="row align-items-center justify-content-center">
+  <div class="col-sm-8 card p-4 m-4 bg-light ">
+      <h1>Edit your service's details</h1>
+      <%= simple_form_for [@business, @service] do |f|%>
+      <%= f.input :name, label:  "What is this service called?", placeholder: 'Double cheeseburger' %>
+      <%= f.input :description, as: :text, label: "Describe the service that you're offering", placeholder: 'A gourmet double cheeseburger with two 4 ounce patties, gruyere + cheddar cheese, tomatoes, grilled onions, bacon, our secret in-house sauce' %>
+      <%= f.input :price_cents, label: "How much does this service cost?", placeholder: '' %>
+      <%= f.input :food, label: "Is this service a food dish?" %>
+      <div id="food_details" style="display:none;">
+      <%= f.input :food_taggings, collection: Service.foodlist, input_html: {multiple: true, id: "food_tagging_new", class: "select2"}, label: "Please add some descriptive tags to the dish that you're offering so that local users could find it more easily" %>
+      </div>
+      <div id="service_details" style="display:block;">
+      <%= f.input :service_taggings, collection: Business.offerings, input_html: {multiple: true, id: "service_tagging_new", class: "select2"}, label: "Please add some descriptive tags to the service that you're offering so that local users could find it more easily" %>
+      </div>
+      <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Please attach at least one photo of this service", error: 'You need to include at least one photo' %>
+      <div style="text-align:center">
+      <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+      </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

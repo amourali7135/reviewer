@@ -1,18 +1,7 @@
 <div class="row align-items-center justify-content-center">
-   <div class="col-sm-8">
-     <div class="">
-      <img src="" alt="" class="img-fluid">
-    </div>
-    <div class="col card p-4 m-4 bg-light ">
-    <div class="row align-items-center justify-content-center">
+  <div class="col-sm-8 card p-4 m-4 bg-light ">
       <h1>Review the!</h1>
-      <p>Easy and free to sign up!</p>
-
-    
-
-    </div>
       <%= simple_form_for [@business, @review] do |f|%>
-      <%#= f.hidden_field :service_id, :value => @review.service.id %>
       <%= f.input :title, label:  "What would you like to title your review?", placeholder: 'Best cafe ever!' %>
       <%= f.input :business_rating, collection: (1..5).to_a, label: "Please rate your overall experience with this business" %>
       <%= f.input :business_review, as: :rich_text_area, label: "Please review your experience with this business in more detail", placeholder: 'This cafe has the best ambiance, staff, and mocha latte that I have ever had in my life!  The wifi is fast, staff are hospitable, and the crowd is friendly...' %>
@@ -32,7 +21,6 @@
       <% end %>
       </div>
     </div>
-  </div>
 
 
 
