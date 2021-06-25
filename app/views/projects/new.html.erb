@@ -1,0 +1,20 @@
+<div class="row align-items-center justify-content-center">
+  <div class="col-sm-8 card p-4 m-4 bg-light ">
+      <h2>Showcase a project of yours to potential customers</h2>
+      <%= simple_form_for [@business, @project] do |f|%>
+      <%= f.input :title, label:  "What would you like to title this project showcase?", placeholder: 'Rooftop renovation' %>
+      <%= f.input :description, as: :text, label: "Describe the project in detail if you wish", placeholder: 'This is a rooftop renovation that I completed during the summer of 2019.  I completely replaced the ceramic tiles with an environmentally friendly tile replacement' %>
+      <%= f.input :price_cents, label: 'How much did you charge for this project?', placeholder: "0" %>
+      <%= f.input :completion, label: "When was this project completed?"%>
+      <%= f.input :time_taken, label: "How long did this project take for you to complete?", placeholder: "10 days" %>
+      <%#= f.input :service_id, label: "Which service of yours is this perk attached to, if any?", collection: @business.services %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Attach on photos of your project", error: 'You need to include at least one photo' %>
+      <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+      </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+

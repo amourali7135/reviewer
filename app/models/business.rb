@@ -18,6 +18,7 @@ class Business < ApplicationRecord
   has_many :userqrs, dependent: :destroy
   has_many :interactionverifications
   has_many :schedules
+  has_many :projects
   accepts_nested_attributes_for :schedules, allow_destroy: true
   
   
