@@ -138,9 +138,11 @@ ActiveRecord::Schema.define(version: 2021_06_06_223101) do
     t.integer "count"
     t.boolean "active", default: true
     t.bigint "business_id", null: false
+    t.bigint "service_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["business_id"], name: "index_perks_on_business_id"
+    t.index ["service_id"], name: "index_perks_on_service_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -320,6 +322,7 @@ ActiveRecord::Schema.define(version: 2021_06_06_223101) do
   add_foreign_key "ownerverificationrequests", "businesses"
   add_foreign_key "ownerverificationrequests", "users"
   add_foreign_key "perks", "businesses"
+  add_foreign_key "perks", "services"
   add_foreign_key "projects", "businesses"
   add_foreign_key "recommendationslists", "businesses"
   add_foreign_key "recommendationslists", "services"

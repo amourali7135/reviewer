@@ -10,8 +10,6 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @business = Business.find(params[:business_id])
-    # @services = @business.services
-    # raise
   end
 
   def create
@@ -22,7 +20,6 @@ class ReviewsController < ApplicationController
       redirect_to @review
     else
       render "new"
-      # raise
     end
   end
 
@@ -45,7 +42,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    flash[:notice] = "This review profile was successfully deleted!"
+    flash[:notice] = "This review was successfully deleted!"
     redirect_to root_path
   end
 
@@ -56,7 +53,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit( :title, :business_rating, :business_review, :useful, :funny, :cool, :questionable, :service_rating, :service_review, :service_id, :value, :atmosphere, :proof, :service, :service_review_too, photos: [] )
+    params.require(:review).permit( :title, :business_rating, :business_review, :useful, :funny, :cool, :questionable, :service_rating, :service_review, :service_review_too, :service_id, :value, :atmosphere, :proof, :service, :followup, :service_review_too, photos: [] )
   end
 
 end

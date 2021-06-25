@@ -1,2 +1,17 @@
-<h1>Perks#edit</h1>
-<p>Find me in app/views/perks/edit.html.erb</p>
+<div class="row align-items-center justify-content-center">
+  <div class="col-sm-8 card p-4 m-4 bg-light ">
+      <h2>Modify the perk that you've been offering</h2>
+      <%= simple_form_for [@business, @perk] do |f|%>
+      <%= f.input :title, label:  "What would you like to name your perk to present to customers?", placeholder: '25% off your next haircut!' %>
+      <%= f.input :description, as: :text, label: "Describe the perk that you're offering", placeholder: 'If you leave a review or provide feedback about your experience with us, you will receive 25% off of your next haircut!' %>
+      <%= f.input :service_id, label: "Which service of yours is this perk attached to, if any?", collection: @business.services %>
+      <%= f.input :count, label:  "How many times can customers redeem this perk?", placeholder: '1' %>
+      <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+      </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
