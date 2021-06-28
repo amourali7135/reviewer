@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
         @project = Project.new(review_params)
         @business = Business.find(params[:business_id])
         if @project.save
-            flash[:notice] = "This project was successfully created!"
+            flash[:notice] = "This project pwas successfully created!"
             redirect_to @project
         else
             render "new"
@@ -53,7 +53,7 @@ class ProjectsController < ApplicationController
     private
     
     def review_params
-        params.require(:project).permit( :title, :description, :price_cents, :offerings, :completion, :time_taken, :business_id, photos: [] )
+        params.require(:project).permit( :title, :description, :price_cents, :offerings, :completion, :time_taken, :business_id, :service_id, photos: [] )
     end
     
 end

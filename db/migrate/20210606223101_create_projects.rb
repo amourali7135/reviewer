@@ -9,6 +9,7 @@ class CreateProjects < ActiveRecord::Migration[6.1]
       t.date :completion
       t.string :time_taken
       t.references :business, null: false, foreign_key: true
+      t.references :service, null: false, foreign_key: true
 
       t.timestamps
     end

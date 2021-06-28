@@ -2,6 +2,7 @@ class Service < ApplicationRecord
   belongs_to :business
   has_many :reviews#, optional: true
   has_many :perks
+  has_many :projects
 
   acts_as_taggable_on :food_taggings, :service_taggings
 

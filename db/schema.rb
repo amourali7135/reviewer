@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_06_223101) do
+ActiveRecord::Schema.define(version: 2021_06_28_222555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,12 @@ ActiveRecord::Schema.define(version: 2021_06_06_223101) do
     t.index ["user_id"], name: "index_businesses_on_user_id"
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "feedbacks", force: :cascade do |t|
     t.string "title"
     t.integer "rating"
@@ -120,6 +126,16 @@ ActiveRecord::Schema.define(version: 2021_06_06_223101) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["business_id"], name: "index_interactionverifications_on_business_id"
     t.index ["user_id"], name: "index_interactionverifications_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "ownerverificationrequests", force: :cascade do |t|
@@ -153,9 +169,11 @@ ActiveRecord::Schema.define(version: 2021_06_06_223101) do
     t.date "completion"
     t.string "time_taken"
     t.bigint "business_id", null: false
+    t.bigint "service_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["business_id"], name: "index_projects_on_business_id"
+    t.index ["service_id"], name: "index_projects_on_service_id"
   end
 
   create_table "recommendationslists", force: :cascade do |t|
@@ -319,11 +337,14 @@ ActiveRecord::Schema.define(version: 2021_06_06_223101) do
   add_foreign_key "feedbacks", "users"
   add_foreign_key "interactionverifications", "businesses"
   add_foreign_key "interactionverifications", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "ownerverificationrequests", "businesses"
   add_foreign_key "ownerverificationrequests", "users"
   add_foreign_key "perks", "businesses"
   add_foreign_key "perks", "services"
   add_foreign_key "projects", "businesses"
+  add_foreign_key "projects", "services"
   add_foreign_key "recommendationslists", "businesses"
   add_foreign_key "recommendationslists", "services"
   add_foreign_key "recommendationslists", "users"

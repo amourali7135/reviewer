@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-
+  
   # Indices decision for services, feedback, perks, or just show on business show page?  You can have tabs for them?
   resources :businesses, except: :destroy, :path => 'businesses' do
-    resources :services#, :path => 'service'
+    resources :services#, :path => 'service'  #is show necessary?
     resources :feedbacks, :path => 'customer_feedback' # Pundit + devise restriction, include from dashboard too
     resources :perks, except: :index #Perks in area?
     resources :reviews, except: :index
@@ -15,11 +15,15 @@ Rails.application.routes.draw do
     resources :interactionverifications, only: [ :show, :create] #:path => 'customers_interacted_with'
     get 'validation', to: 'interactionverifications#create', as: 'qr_verification_validation'
   end
-
+  
   #Wtf is this array?  I dont' even remember.  Got from Creaze.
   resources :services, only: [], :path => 'services' do
   end
-
+  
+  resources :chatrooms, only: :show, :path => 'messages' do
+    resources :messages, only: :create
+  end  
+  
   resources :users, except: [:index ] do #Index necessary?
     resources :redemptions, only: [:show, :create, :update]
     resources :recommendationslists
@@ -27,7 +31,7 @@ Rails.application.routes.draw do
     resources :userqrs, only: [:index, :create, :update, :show], :path => 'verified_feedback_or_reviews'
     resources :interactionverifications, only: [:index], :path => 'verified_interactions'
   end
-
+  
   get 'about', to: 'pages#about', as: 'about'
   get 'explore', to: 'pages#explore', as: 'explore'
   get "help", to: "pages#help", as: 'help'
