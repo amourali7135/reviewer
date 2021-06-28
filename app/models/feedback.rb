@@ -6,6 +6,7 @@ class Feedback < ApplicationRecord
   validates :advice, presence: true
   validates :date_interacted, presence: true
   validates :rating, presence: true
+  validates :photos, attached: true, limit: { min: 1, max: 10 }
 
   has_many_attached :photos
   has_many :userqrs

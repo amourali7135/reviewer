@@ -1,2 +1,17 @@
-<h1>Feedbacks#new</h1>
-<p>Find me in app/views/feedbacks/new.html.erb</p>
+<div class="row align-items-center justify-content-center">
+  <div class="col-sm-8 card p-4 m-4 bg-light ">
+      <h2>Provide this business with some private feedback about your experience with them so that they can improve themselves moving forward</h2>
+      <%= simple_form_for [@business, @feedback] do |f|%>
+      <%= f.input :title, label:  "What would you like to name or headline your feedback?", placeholder: 'The haircut that you gave me was a little uneven' %>
+      <%= f.input :rating, collection: (1..5).to_a, label: "What would you privately review your overall experience with this business?" %>
+      <%= f.input :advice, label: "Please provide some constructive feedback so that this business can learn or improve themselves", placeholder: "Hi!  You cut my hair yesterday, and I really enjoyed talking with you!  But I felt like you were rushing me out towards the end.  When I came home, I realized that the left side of my head was pretty uneven compared to the right.  I don't want to ruin your reputation online over this, but I feel like you should be much more cautious about doing anything like this again moving forward." %>
+      <%= f.input :date_interacted, label: "On which date did you interact with this business?" %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Please attach at least one photo as proof that you interacted with this business", error: 'You need to include at least one photo' %>
+      <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+      </div>
+      <% end %>
+      </div>
+    </div>
+</div>
+
+

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  # Indices for services, feedback, perks, or just show on business show page?  You can have tabs for them?
+  # Indices decision for services, feedback, perks, or just show on business show page?  You can have tabs for them?
   resources :businesses, except: :destroy, :path => 'businesses' do
     resources :services#, :path => 'service'
     resources :feedbacks, :path => 'customer_feedback' # Pundit + devise restriction, include from dashboard too

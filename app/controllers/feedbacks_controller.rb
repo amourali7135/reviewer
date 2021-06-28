@@ -5,10 +5,13 @@ class FeedbacksController < ApplicationController
 
   def new
     @feedback = Feedback.new
+    @business = Business.find(params[:business_id])
   end
 
   def create
     @feedback = Feedback.new(feedback_params)
+    @business = Business.find(params[:business_id])
+    @feedback.user_id = current_user.id
     if @feedback.save
       flash[:notice] = "This feedback form was successfully sent!"
       redirect_to @feedback.business
