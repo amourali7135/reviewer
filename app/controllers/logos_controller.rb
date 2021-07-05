@@ -2,20 +2,22 @@ class LogosController < ApplicationController
 
     # Get rid of this later, bad UX.
     def new 
-        @logo = Logo.new
-        @business = Business.find(params[:business_id])
+      @business = Business.find(params[:business_id])
+      @logo = Logo.new
     end
     
-      def create
-        @logo = Logo.new(logo_params)
-        @business = Business.find(params[:business_id])
+    def create
+      @business = Business.find(params[:business_id])
+      @logo = Logo.new(logo_params)
+        # @business = Business.find(params[:business_id])
         if @logo.save
           flash[:notice] = "You've successfully added your logo!"
           redirect_to business_dashboard_path
         else
           flash[:notice] = "There was an error, please try again!"
-          redirect_to business_dashboard_path
+          redirect_back(fallback_location: new_business_logo_path(@business, @logo))
         end
+        raise
       end
 
       def edit

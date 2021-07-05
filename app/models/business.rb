@@ -1,6 +1,7 @@
 class Business < ApplicationRecord
   belongs_to :user, optional: true
   
+  acts_as_taggable_on :tags
   acts_as_taggable_on :offerings
   
   geocoded_by :address

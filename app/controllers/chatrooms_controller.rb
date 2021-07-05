@@ -6,7 +6,7 @@ class ChatroomsController < ApplicationController
             flash[:notice] = "This chatroom was successfully created!"
             redirect_to @chatroom
         else
-            redirect_to :back
+            redirect_back(fallback_location: root_path)
         end
         # raise
     end

@@ -50,7 +50,7 @@ class BusinessesController < ApplicationController
   private
   
   def business_params
-    params.require(:business).permit( :name, :phone, :address, :latitude, :longitude, :price_range, :claimed, :about, :founded, :website, :instagram, :facebook, :parking, :influencer_hub, :local_favorite, :restaurant, :alcohol, :takeout, :vegan_vegetarian_friendly, :gluten_free_friendly, :logo, :history, :intro, :pet_friendly,  :kid_friendly, :scenic, :reservations, :verified, :permanently_closed, tag_list: [], photos: [], service_options: [], specialties: [], delivery_options: [],health_safety: [], highlights: [], delivery_options: [], accessibility: [], offerings: [], amenities: [], payments: [],  schedules_attributes: [ :id, :opens_at, :closes_at, :weekday, :_destroy ] )
+    params.require(:business).permit( :name, :phone, :address, :latitude, :longitude, :price_range, :claimed, :about, :founded, :website, :instagram, :facebook, :parking, :influencer_hub, :local_favorite, :restaurant, :alcohol, :takeout, :vegan_vegetarian_friendly, :gluten_free_friendly, :logo, :history, :intro, :pet_friendly,  :kid_friendly, :scenic, :reservations, :verified, :permanently_closed, :tag_list, tag_list: [], photos: [], service_options: [], specialties: [], delivery_options: [],health_safety: [], highlights: [], delivery_options: [], accessibility: [], offerings: [], amenities: [], payments: [],  schedules_attributes: [ :id, :opens_at, :closes_at, :weekday, :_destroy ] )
   end
   
   
