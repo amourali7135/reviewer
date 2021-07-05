@@ -1,0 +1,6 @@
+<div>
+  <%= simple_form_for [ @logo, @business ], remote: true do |f| %>
+    <%= f.input :photo, as: :file, label: "Please upload your logo or preferred photo to be the face of your business" %>
+    <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+  <% end %>
+</div>

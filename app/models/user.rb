@@ -16,6 +16,8 @@ class User < ApplicationRecord
   # has_many :verificationqrs#, dependent: :destroy #is this shit scalable dog?
   has_many :userqrs
   has_many :interactionverifications, dependent: :destroy
+  has_many :chatrooms, through: :messages
+  has_many :messages, dependent: :destroy
 
   # Uncomment out after shit's ready to go dude.
   # validates :city, presence: true

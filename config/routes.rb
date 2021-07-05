@@ -12,15 +12,16 @@ Rails.application.routes.draw do
     resources :projects, except: :index
     #singular resource for verification_qr?  Had no idea.  try it...
     resource :verificationqr, only: [:show, :create], :path => 'verification_qr_code' #Oh wait...lock it to owner only.
-    resources :interactionverifications, only: [ :show, :create] #:path => 'customers_interacted_with'
+    resources :interactionverifications, except: :index #:path => 'customers_interacted_with'
     get 'validation', to: 'interactionverifications#create', as: 'qr_verification_validation'
+    resources :logos, except: :index, :path => 'logo'
   end
   
   #Wtf is this array?  I dont' even remember.  Got from Creaze.
   resources :services, only: [], :path => 'services' do
   end
   
-  resources :chatrooms, only: :show, :path => 'messages' do
+  resources :chatrooms, only: [ :create, :show ], :path => 'inbox' do
     resources :messages, only: :create
   end  
   

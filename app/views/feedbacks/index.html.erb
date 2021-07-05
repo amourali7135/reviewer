@@ -1,2 +1,10 @@
-<h1>Feedbacks#index</h1>
-<p>Find me in app/views/feedbacks/index.html.erb</p>
+<div>
+    hi!
+</div>
+
+<div>
+<%# Fix this up well later.  %>
+ <% @business.feedbacks.each do |feedback| %>
+<%= link_to 'See this feedback!', business_feedback_path(@business, feedback), method: :get  %>
+<% end %>
+</div>

@@ -20,6 +20,7 @@ class Business < ApplicationRecord
   has_many :schedules
   has_many :projects
   accepts_nested_attributes_for :schedules, allow_destroy: true
+  has_one :logo
   
   
   validates :name, presence: true

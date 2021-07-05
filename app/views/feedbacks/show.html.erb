@@ -1,3 +1,12 @@
-<h1>Feedbacks#show</h1>
-<p>Find me in app/views/feedbacks/show.html.erb</p>
-YOU NEED TO PUT THE FEEDBACK AND A LINK TO RESPOND TO THE FEEDBACK.USER VIA ACTION CABLE!!!!!
+<div class="row align-items-center justify-content-center">
+    <%= @feedback.title %>
+    <%= @feedback.advice %>
+    <%= @feedback.rating %>
+    <%= @feedback.date_interacted %>
+    <%= @feedback.user.email %>
+</div>
+
+<div>
+  <%= link_to 'Respond to this feedback', chatrooms_path(current_user, @feedback.user_id), method: :post, class: 'btn btn-primary' %> 
+  <%#= link_to 'Respond to this feedback', chatrooms_path(@chatroom.message.user_id: current_user.id), method: :post, class: 'btn btn-primary' %> 
+</div>

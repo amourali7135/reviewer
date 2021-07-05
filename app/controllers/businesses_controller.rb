@@ -28,7 +28,7 @@ class BusinessesController < ApplicationController
     @business = Business.find(params[:id])
     if @business.update(business_params)
       flash[:notice] = "This business's profile was successfully updated!"
-      redirect_to @business
+      redirect_to @business # if !current_user.business
     else
       flash[:error] = "There was an error, please try again!"
       render 'edit'

@@ -10,8 +10,11 @@ require 'faker'
 puts "Destroy everything"
 
 User.destroy_all
+Chatroom.destroy_all
+Message.destroy_all
 Business.destroy_all
 Service.destroy_all
+Feedback.destroy_all
 
 
 puts 'Creating 2 fake users...'
@@ -92,5 +95,29 @@ service = Service.new(
   business_id: Business.pluck(:id).sample
 )
 service.save!
+
+puts "Creating 2 fake feedbacks..."
+
+feedback = Feedback.new(
+  title: "Feedback 1", 
+  rating: Faker::Number.between(from: 1, to: 5),
+  advice: Faker::Lorem.sentences(number: 2),
+  date_interacted: Faker::Date.between(from: 300.days.ago, to: Date.today), 
+  # remote_photo_url: Faker::Avatar.image,
+  business_id: Business.pluck(:id).sample, 
+  user_id: User.pluck(:id).sample
+)
+feedback.save!
+
+feedback = Feedback.new(
+  title: "Feedback 2", 
+  rating: Faker::Number.between(from: 1, to: 5),
+  advice: Faker::Lorem.sentences(number: 2),
+  date_interacted: Faker::Date.between(from: 300.days.ago, to: Date.today), 
+  # remote_photo_url: Faker::Avatar.image,
+  business_id: Business.pluck(:id).sample, 
+  user_id: User.pluck(:id).sample
+)
+feedback.save!
 
 puts "Done for now...!"

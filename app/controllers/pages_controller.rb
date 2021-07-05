@@ -22,18 +22,21 @@ class PagesController < ApplicationController
   end
   
   def business_dashboard
-    @business = Business.where(user_id: current_user.id)
-    if
-      @business.exists?
-    else !current_user.business_owner_role
-      flash[:notice] = "Only business owners can access business dashboards!"
+    if !current_user.business
+      flash[:notice] = "Only business owners have access to dashboards!"
       redirect_to root_path
+    else
+      #This is fucking huge dude, god damn.  Make it a better query.  
+      #Should I use where or find_by?  Try them both...
+      @business = Business.find_by(user_id: current_user.id)#.includes([:reviews])
+      # @review = Review.find_by(business_id: @business.id)
+      # @feedback = Feedback.find_by(business_id: @business.id)  #I need this on a separate page, not the dashboard.
+      # @perk = Perk.where(business_id: @business.id)
+      # @service = Service.where(business_id: @business.id)
+      # @logo = @business.logo #Logo.where(business_id: @business.id)
+      # raise
     end
-    #This is fucking huge dude, god damn.  Make it a better query.  
-    @reviews = Review.where(business_id: @business.id)
-    @feedbacks = Feedback.where(business_id: @business.id)
-    @perks = Perk.where(business_id: @business.id)
-    @services = Service.where(business_id: @busienss.id)
+   
   end
   
   def user_dashboard

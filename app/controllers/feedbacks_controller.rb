@@ -1,6 +1,13 @@
 class FeedbacksController < ApplicationController
   def index
-    @businesses = Feedback.all
+    # experiment
+    @business = Business.find(params[:business_id])
+    # Seriously...this is it?  So easy.
+    # @business = current_user.business.id  # NOPE!
+    # @business.feedbacks loop versus this
+    # @feedbacks = Feedback.find_by(business_id: @business.id)
+    # @feedbacks = Business.feedback
+    # raise
   end
 
   def new
