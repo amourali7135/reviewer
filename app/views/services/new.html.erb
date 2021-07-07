@@ -4,13 +4,13 @@
       <%= simple_form_for [@business, @service] do |f|%>
       <%= f.input :name, label:  "What is this service called?", placeholder: 'Double cheeseburger' %>
       <%= f.input :description, as: :text, label: "Describe the service that you're offering", placeholder: 'A gourmet double cheeseburger with two 4 ounce patties, gruyere + cheddar cheese, tomatoes, grilled onions, bacon, our secret in-house sauce' %>
-      <%= f.input :price_cents, label: "How much does this service cost?", placeholder: '' %>
+      <%= f.input :price_cents, label: "How much does this service cost?", placeholder: '10$', error: 'You need to include the price' %>
       <%= f.input :food, label: "Is this service a food dish?" %>
       <div id="food_details" style="display:none;">
-      <%= f.input :food_taggings, collection: Service.foodlist, input_html: {multiple: true, id: "food_tagging_new", class: "select2"}, label: "Please add some descriptive tags to the dish that you're offering so that local users could find it more easily" %>
+      <%= f.input :food_tagging_list, collection: Service.foodlist, input_html: {multiple: true, id: "food_tagging_new", class: "select2"}, include_blank: false, label: "Please add some descriptive tags to the dish that you're offering so that local users could find it more easily" %>
       </div>
       <div id="service_details" style="display:block;">
-      <%= f.input :service_taggings, collection: Business.offerings, input_html: {multiple: true, id: "service_tagging_new", class: "select2"}, label: "Please add some descriptive tags to the service that you're offering so that local users could find it more easily" %>
+      <%= f.input :service_tagging_list, collection: Business.offerings, input_html: {multiple: true, id: "service_tagging_new", class: "select2"}, include_blank: false, label: "Please add some descriptive tags to the service that you're offering so that local users could find it more easily" %>
       </div>
       <%= f.input :photo, as: :file, label: "Please attach one photo of this service", error: 'You need to include one photo' %>
       <div style="text-align:center">

@@ -17,7 +17,7 @@ class CreateBusinesses < ActiveRecord::Migration[6.0]
       t.text :health_safety
       t.text :highlights
       t.text :accessibility
-      t.text :offerings
+      # t.text :offerings
       t.text :amenities
       t.text :payments
       t.boolean :parking, default: false

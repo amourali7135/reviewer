@@ -69,7 +69,6 @@ ActiveRecord::Schema.define(version: 2021_07_02_204419) do
     t.text "health_safety"
     t.text "highlights"
     t.text "accessibility"
-    t.text "offerings"
     t.text "amenities"
     t.text "payments"
     t.boolean "parking", default: false
@@ -101,8 +100,10 @@ ActiveRecord::Schema.define(version: 2021_07_02_204419) do
 
   create_table "chatrooms", force: :cascade do |t|
     t.string "name"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_chatrooms_on_user_id"
   end
 
   create_table "feedbacks", force: :cascade do |t|
@@ -259,8 +260,6 @@ ActiveRecord::Schema.define(version: 2021_07_02_204419) do
     t.string "name"
     t.text "description"
     t.integer "price_cents"
-    t.text "food_taggings"
-    t.text "service_taggings"
     t.boolean "food", default: false
     t.bigint "business_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -340,6 +339,7 @@ ActiveRecord::Schema.define(version: 2021_07_02_204419) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "businesses", "users"
+  add_foreign_key "chatrooms", "users"
   add_foreign_key "feedbacks", "businesses"
   add_foreign_key "feedbacks", "users"
   add_foreign_key "interactionverifications", "businesses"

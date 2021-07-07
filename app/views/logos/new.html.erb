@@ -1,8 +1,8 @@
 <div class="row align-items-center justify-content-center">
   <div class="col-sm-8 card p-4 m-4 bg-light ">
-    <%= simple_form_for [ @business, @logo ] do |f| %>
+    <%= simple_form_for [ @business, @logo ], path: 'business_logos' do |f| %>
         <%= f.input :photo, as: :file, label: "Please upload your logo or the photo that you want to be the face of your business", error: 'You need to include a photo' %>
-        
+        <% f.hidden_field :business_id, :value => @business.id %>
         <%= f.button :submit, 'Submit', class: 'btn btn-primary mt-2'%>
     <% end %>
   </div>

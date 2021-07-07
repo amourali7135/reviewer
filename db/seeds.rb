@@ -9,12 +9,12 @@ require 'faker'
 
 puts "Destroy everything"
 
-User.destroy_all
 Chatroom.destroy_all
 Message.destroy_all
 Business.destroy_all
 Service.destroy_all
 Feedback.destroy_all
+User.destroy_all
 
 
 puts 'Creating 2 fake users...'
@@ -41,6 +41,7 @@ business = Business.new(
   founded: Faker::Date.between(from: 300.days.ago, to: Date.today),
   payments: 'cash only',
   restaurant: Faker::Boolean.boolean,
+  offering_list: Business.offerings.sample(2), 
   user_id: nil
 )
 business.save!
@@ -54,6 +55,7 @@ business = Business.new(
   founded: Faker::Date.between(from: 300.days.ago, to: Date.today),
   payments: 'cash only',
   restaurant: Faker::Boolean.boolean,
+  offering_list: Business.offerings.sample(2), 
   user_id: User.where(email: 'amir@mourali.com')
 )
 business.save!
@@ -65,6 +67,8 @@ service = Service.new(
   description: Faker::Lorem.sentences(number: 1),
   price_cents: Faker::Commerce.price,
   # remote_photo_url: Faker::Avatar.image,
+  service_tagging_list: Business.offerings.sample(2), 
+  food_tagging_list: Service.foodlist.sample(2),
   business_id: Business.pluck(:id).sample
 )
 service.save!
@@ -74,6 +78,8 @@ service = Service.new(
   description: Faker::Lorem.sentences(number: 1),
   price_cents: Faker::Commerce.price,
   # remote_photo_url: Faker::Avatar.image,
+  service_tagging_list: Business.offerings.sample(2), 
+  food_tagging_list: Service.foodlist.sample(2),
   business_id: Business.pluck(:id).sample
 )
 service.save!
@@ -83,6 +89,8 @@ service = Service.new(
   description: Faker::Lorem.sentences(number: 1),
   price_cents: Faker::Commerce.price,
   # remote_photo_url: Faker::Avatar.image,
+  service_tagging_list: Business.offerings.sample(2), 
+  food_tagging_list: Service.foodlist.sample(2),
   business_id: Business.pluck(:id).sample
 )
 service.save!
@@ -92,6 +100,8 @@ service = Service.new(
   description: Faker::Lorem.sentences(number: 1),
   price_cents: Faker::Commerce.price,
   # remote_photo_url: Faker::Avatar.image,
+  service_tagging_list: Business.offerings.sample(2), 
+  food_tagging_list: Service.foodlist.sample(2),
   business_id: Business.pluck(:id).sample
 )
 service.save!

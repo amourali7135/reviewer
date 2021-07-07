@@ -4,7 +4,8 @@ class Service < ApplicationRecord
   has_many :perks
   has_many :projects
 
-  acts_as_taggable_on :tags
+  # acts_as_taggable_on :tags
+  # acts_as_taggable_on :food_tagging_list, :service_tagging_list
   acts_as_taggable_on :food_taggings, :service_taggings
 
   validates :name, presence: true, length: { minimum: 5 }

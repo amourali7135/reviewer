@@ -4,12 +4,14 @@ class LogosController < ApplicationController
     def new 
       @business = Business.find(params[:business_id])
       @logo = Logo.new
+      # raise
     end
     
     def create
-      @business = Business.find(params[:business_id])
       @logo = Logo.new(logo_params)
-        # @business = Business.find(params[:business_id])
+      @business = Business.find(params[:business_id])
+      @logo.business = @business
+      @business.logo = @logo
         if @logo.save
           flash[:notice] = "You've successfully added your logo!"
           redirect_to business_dashboard_path

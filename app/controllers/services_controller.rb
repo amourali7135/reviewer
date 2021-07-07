@@ -6,15 +6,22 @@ class ServicesController < ApplicationController
   def new
     @service = Service.new
     @business = Business.find(params[:business_id])
+    # raise
   end
   
   def create
     @service = Service.new(service_params)
+    @business = Business.find(params[:business_id])
+    @service.business = @business
     if @service.save
       flash[:notice] = "This service was successfully added!"
-      redirect_to @service
+      # redirect_to @service
+      redirect_to business_service_path(@business, @service), method: :get 
     else
+      flash[:notice] = "There was an error, please try again!"
+      # redirect_to new_business_service_path(business_id: @business.id)
       render "new"
+      # raise 
     end
   end
   
@@ -48,7 +55,7 @@ class ServicesController < ApplicationController
   private
   
   def service_params
-    params.require(:service).permit( :name, :description, :food, :price_cents, :photo, :tag_list, tag_list: [], food_taggings: [], service_taggings: [] )
+    params.require(:service).permit( :name, :description, :food, :price_cents, :photo, :tag_list, tag_list: [], food_tagging_list: [], service_tagging_list: [] )
   end
   
 end

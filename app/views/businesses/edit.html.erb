@@ -14,7 +14,7 @@
       <%= f.input :health_safety, collection: Business.health_safety, input_html: {multiple: true, id: "business_health_new", class: "select2"}, label: "What health related precautions is your business taking?" %>
       <%= f.input :highlights, collection: Business.highlights, input_html: {multiple: true, id: "business_highlights_new", class: "select2"}, label: "What are some highlights of your business?" %>
       <%= f.input :accessibility, collection: Business.accessibility, input_html: {multiple: true, id: "business_accessibility_new", class: "select2"}, label: "What options does your business provide for the handicapped and disabled??" %>
-      <%= f.input :offerings, collection: Business.offerings, input_html: {multiple: true, id: "business_offerings_new", class: "select2"}, label: "What does your business have to offer?" %>
+      <%= f.input :offering_list, collection: Business.offerings, input_html: {multiple: true, id: "business_offerings_new", class: "select2"}, label: "What does your business have to offer?" %>
       <%= f.input :payments, collection: Business.payments, input_html: {multiple: true, id: "business_payments_new", class: "select2"}, label: "What type of payments does your business accept?" %>
       <%= f.input :parking, label: "Is there parking available?" %>
       <%= f.input :influencer_hub, label: "Do social media influencers love this place?" %>
