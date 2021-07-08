@@ -19,7 +19,7 @@ class LogosController < ApplicationController
           flash[:notice] = "There was an error, please try again!"
           redirect_back(fallback_location: new_business_logo_path(@business, @logo))
         end
-        raise
+        # raise
       end
 
       def edit
