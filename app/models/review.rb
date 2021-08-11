@@ -10,7 +10,7 @@ class Review < ApplicationRecord
   validates :title, presence: true, length: { minimum: 5 }
   validates :business_rating, presence: true
   validates :business_review, presence: true, length: { minimum: 10 }
-  validates :photos, attached: true, limit: { min: 1, max: 10 }
+  # for seeding validates :photos, attached: true, limit: { min: 1, max: 10 }
   #, {message: 'You must attach at least one photo!'}#, content_type: ['image/png', 'image/jpg', 'image/jpeg']
 
   has_many_attached :photos  

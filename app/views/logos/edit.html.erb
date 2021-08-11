@@ -1,5 +1,6 @@
 <div class="row align-items-center justify-content-center">
   <div class="col-sm-8 card p-4 m-4 bg-light ">
+    <h2>Would you like to update your logo/main photo?</h2>
     <%= simple_form_for [ @business, @logo ] do |f| %>
         <%= f.input :photo, as: :file, label: "Would you like to update your logo or primary business photo?", error: 'You need to include a photo' %>
         <%= f.button :submit, 'Submit', class: 'btn btn-primary mt-2'%>
