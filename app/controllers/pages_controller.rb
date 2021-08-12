@@ -20,6 +20,10 @@ class PagesController < ApplicationController
   def contact
     
   end
+
+  def thanks
+    #feedback params = 5 star inclusion for prompt to 
+  end
   
   def business_dashboard
     if !current_user.business
@@ -43,10 +47,11 @@ class PagesController < ApplicationController
     #Refactor the shit out of this homie, god damn.  
     @user = current_user
     @reviews = Review.where(user_id: current_user.id)
-    @redemptions = Redemption.where(user_id: current_user.id)
+    @redemptions = Redemption.where(user_id: current_user.id, redeemed: true)
     @recommendationslists = Recommendationslist.where(user_id: current_user.id)
     @interactionverifications = Interactionverification.where(user_id: current_user.id)
     @feedbacks = Feedback.where(user_id: current_user.id)
+    @redemptionseligible = Redemption.where(user_id: current_user.id, redeemed: false)
   end
   
   def following
@@ -78,6 +83,10 @@ class PagesController < ApplicationController
   end
   
   def verify
+    
+  end
+
+  def business_verification
     
   end
   

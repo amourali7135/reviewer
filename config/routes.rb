@@ -46,4 +46,6 @@ Rails.application.routes.draw do
   get 'career', to: 'pages#career', as: 'career'
   get 'updates', to: 'pages#updates', as: 'updates'
   get 'blog', to: 'pages#blog', as: 'blog'
+  get 'thanks', to: 'pages#thanks', as: 'thanks'
+  get 'business_verification', to: 'pages#business_verification', as: 'business_verification'
 end

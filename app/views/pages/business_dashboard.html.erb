@@ -1,13 +1,13 @@
 <div>
+  <h4>Your current business logo</h4>
+  <%= cl_image_tag @business.logo.photo.key, height: 300, width: 400, crop: :fill if @business.logo %>
+</div>
+
+<div>
   <%= simple_form_for [ @logo, @business ], remote: true do |f| %>
     <%= f.input :photo, as: :file, label: "Please upload your logo or preferred photo to be the face of your business" %>
     <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
   <% end %>
-</div>
-
-<div>
-  <h4>Your business logo</h4>
-  <%= cl_image_tag @business.logo.photo.key, height: 300, width: 400, crop: :fill if @business.logo %>
 </div>
 
 <div>
@@ -16,6 +16,12 @@
   <%= link_to service.name, edit_business_service_path(@business, service) %>
   <% end %>
 </div>
+
+<div>
+  <h4>Add a new service</h4>
+   <%= link_to "Add service", new_business_service_path(@business)%> 
+</div>
+
 
 <div>
   <h4>All of your customer feedback</h4>
@@ -27,6 +33,11 @@
   <% @business.perks.each do |perk| %>
   <%= link_to perk.title, edit_business_perk_path(@business, perk)  %>
   <% end %>
+</div>
+
+<div>
+  <h4>Add a new perk</h4>
+   <%= link_to "Add perk", new_business_perk_path(@business)%> 
 </div>
 
 <div>
@@ -42,6 +53,11 @@
   <% @business.projects.each do |project| %>
   <%= link_to project.title, edit_business_project_path(@business, project)  %>
   <% end %>
+</div>
+
+<div>
+  <h4>Add a new project</h4>
+   <%= link_to "Add project", new_business_project_path(@business)%> 
 </div>
 
 <div>

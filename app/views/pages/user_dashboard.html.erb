@@ -1,0 +1,42 @@
+<div>
+  <h4>All of your <%=@reviews.length%> business reviews</h4>
+  <% @reviews.each do |review| %>
+  <%= link_to review.title, business_review_path(review.business_id, review), method: :get  %>
+  <% end %>
+</div>
+
+
+<div>
+  <h4>All of your <%=@feedbacks.length%> privately provided business feedback</h4>
+  <% @feedbacks.each do |feedback| %>
+  <%= link_to feedback.title, business_feedback_path(feedback.business_id, feedback), method: :get  %>
+  <% end %>
+</div>
+
+<div>
+  <h4>You've verified your interactions with <%=@interactionverifications.length%> businesses</h4>
+  <% @interactionverifications.each do |interaction| %>
+  <%= link_to interaction.business.name, business_path(interaction.business_id), method: :get  %>
+  <% end %>
+</div>
+
+<div>
+  <h4>You've redeemed <%=@redemptions.length%> of the rewards that you're eligible for</h4>
+  <% @redemptions.each do |redemption| %>
+  <%= link_to redemption.perk.title, business_perk_path(redemption.perk_id, redemption.perk.business_id), method: :get  %>
+  <% end %>
+</div>
+
+<div>
+  <h4>You're eligible to redeem <%=@redemptionseligible.length%> rewards </h4>
+  <% @redemptionseligible.each do |redemption| %>
+  <%= link_to redemption.perk.title, business_perk_path(redemption.perk_id, redemption.perk.business_id), method: :get  %>
+  <% end %>
+</div>
+
+<div>
+  <h4>Your <%=@recommendationslists.length%> recommendation lists </h4>
+  <% @recommendationslists.each do |recommendationlist| %>
+  <%= link_to recommendationlist.title, user_recommendationslist_path(recommendationlist), method: :get  %>
+  <% end %>
+</div>
