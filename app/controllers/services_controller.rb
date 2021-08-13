@@ -50,6 +50,7 @@ class ServicesController < ApplicationController
   
   def edit
     @service = Service.find(params[:id])
+    @business = Business.find(params[:business_id])
   end
   
   private

@@ -1,6 +1,6 @@
 <div class="row align-items-center justify-content-center">
   <div class="col-sm-8 card p-4 m-4 bg-light ">
-      <h2>Provide this business with some private feedback about your experience with them so that they can improve themselves moving forward</h2>
+      <h2>Provide <%=@business.name%> with some private feedback about your experience with them so that they can improve themselves moving forward</h2>
       <%= simple_form_for [@business, @feedback] do |f|%>
       <%= f.input :title, label:  "What would you like to name or headline your feedback?", placeholder: 'The haircut that you gave me was a little uneven' %>
       <%= f.input :rating, collection: (1..5).to_a, label: "What would you privately review your overall experience with this business?" %>

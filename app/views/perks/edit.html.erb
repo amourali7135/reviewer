@@ -1,11 +1,16 @@
 <div class="row align-items-center justify-content-center">
   <div class="col-sm-8 card p-4 m-4 bg-light ">
-      <h2>Modify the perk that you've been offering</h2>
+      <h2>Modify or deactivate the perk that you've been offering</h2>
       <%= simple_form_for [@business, @perk] do |f|%>
       <%= f.input :title, label:  "What would you like to name your perk to present to customers?", placeholder: '25% off your next haircut!' %>
       <%= f.input :description, as: :text, label: "Describe the perk that you're offering", placeholder: 'If you leave a review or provide feedback about your experience with us, you will receive 25% off of your next haircut!' %>
       <%= f.input :service_id, label: "Which service of yours is this perk attached to, if any?", collection: @business.services %>
       <%= f.input :count, label:  "How many times can customers redeem this perk?", placeholder: '1' %>
+      <% if @perk.active %>
+      <%= f.input :active, label:  "Would you like to cease offering this perk?", as: :boolean, checked_value: false, unchecked_value: true, default: false %>
+      <% else %>
+      <%= f.input :active, label:  "Would you like to renew offering this perk?", as: :boolean, checked_value: true, unchecked_value: false, default: false %>
+      <% end %>
       <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
       </div>
       <% end %>

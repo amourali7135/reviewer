@@ -1,6 +1,6 @@
 <div class="row align-items-center justify-content-center">
   <div class="col-sm-8 card p-4 m-4 bg-light ">
-      <h2>Review the!</h2>
+      <h2>Review your experience with <%=@business.name%>!</h2>
       <%= simple_form_for [@business, @review] do |f|%>
       <%= f.input :title, label:  "What would you like to title your review?", placeholder: 'Best cafe ever!' %>
       <%= f.input :business_rating, collection: (1..5).to_a, label: "Please rate your overall experience with this business" %>

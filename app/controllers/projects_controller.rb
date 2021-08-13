@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
     def create
         @project = Project.new(review_params)
         @business = Business.find(params[:business_id])
+        @project.business = @business
         if @project.save
             flash[:notice] = "This project pwas successfully created!"
             redirect_to @project
@@ -48,6 +49,7 @@ class ProjectsController < ApplicationController
     
     def edit
         @project = Project.find(params[:id])
+        @business = Business.find(params[:business_id])
     end
     
     private

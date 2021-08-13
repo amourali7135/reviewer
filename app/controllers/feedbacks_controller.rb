@@ -19,6 +19,7 @@ class FeedbacksController < ApplicationController
     @feedback = Feedback.new(feedback_params)
     @business = Business.find(params[:business_id])
     @feedback.user_id = current_user.id
+    @feedback.business = @business
     if @feedback.save
       flash[:notice] = "This feedback form was successfully sent!"
       redirect_to @feedback.business
@@ -52,6 +53,7 @@ class FeedbacksController < ApplicationController
 
   def edit
     @feedback = Feedback.find(params[:id])
+    @business = Business.find(params[:business_id])
   end
 
   private

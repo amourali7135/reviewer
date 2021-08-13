@@ -5,16 +5,17 @@ class PerksController < ApplicationController
   end
 
   def new
-    @perk = Perk.new
     @business = Business.find(params[:business_id])
+    @perk = Perk.new
   end
 
   def create
     @perk = Perk.new(perk_params)
     @business = Business.find(params[:business_id])
+    @perk.business = @business
     if @perk.save
       flash[:notice] = "You've successfully added your perk!"
-      redirect_to @perk
+      redirect_to business_dashboard_path
     else
       render "new"
     end
@@ -28,7 +29,7 @@ class PerksController < ApplicationController
     @perk = Perk.find(params[:id])
     if @perk.update(perk_params)
       flash[:notice] = "You've successfully updated your perk"
-      redirect_to @perk
+      redirect_to business_dashboard_path
     else
       flash[:error] = "There was an error, please try again!"
       render 'edit'
@@ -45,6 +46,7 @@ class PerksController < ApplicationController
 
   def edit
     @perk = Perk.find(params[:id])
+    @business = Business.find(params[:business_id])
   end
 
   private

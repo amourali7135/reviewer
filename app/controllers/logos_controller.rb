@@ -24,6 +24,7 @@ class LogosController < ApplicationController
 
       def edit
         @logo = Logo.find(params[:id])
+        @business = Business.find(params[:business_id])
       end    
     
       def update

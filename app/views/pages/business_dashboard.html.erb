@@ -29,14 +29,23 @@
 </div>
 
 <div>
-  <h4>All of the perks that you're offering customers</h4>
+  <h4>All of the perks that you've ever offered customers</h4>
   <% @business.perks.each do |perk| %>
   <%= link_to perk.title, edit_business_perk_path(@business, perk)  %>
   <% end %>
 </div>
 
 <div>
-  <h4>Add a new perk</h4>
+  <h4>All of the active perks that you're currently offering customers FIGURE OUT</h4>
+</div>
+
+<div>
+  <h4>Would you like to deactive these perks?</h4>
+</div>
+
+
+<div>
+  <h4>Would you like to add a new perk?</h4>
    <%= link_to "Add perk", new_business_perk_path(@business)%> 
 </div>
 
